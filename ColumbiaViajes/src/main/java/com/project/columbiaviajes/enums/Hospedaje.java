@@ -1,7 +1,7 @@
 
 package com.project.columbiaviajes.enums;
 
-public enum RegimenHospedaje {
+public enum Hospedaje {
     MEDIA_PENSION,
     PENSION_COMPLETA
 }

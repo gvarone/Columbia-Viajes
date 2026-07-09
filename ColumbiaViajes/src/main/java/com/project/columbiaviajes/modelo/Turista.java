@@ -1,7 +1,10 @@
 
 package com.project.columbiaviajes.modelo;
 
-public class Turista {
+import java.io.Serializable;
+
+
+public class Turista implements Serializable {
     private int codigo;
     private String nombre;
     private String apellido;
