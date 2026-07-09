@@ -1,0 +1,127 @@
+Last login: Thu Jul  9 17:39:02 on console
+guidoalvarez@MacBook-Air-de-Guido ~ % git --version
+git version 2.43.0
+guidoalvarez@MacBook-Air-de-Guido ~ % pwd
+/Users/guidoalvarez
+guidoalvarez@MacBook-Air-de-Guido ~ % ls
+Applications		Pictures		scoring_parte_5.csv
+Desktop			Postman			scoring_parte_6.csv
+Documents		Public			scoring_parte_7.csv
+Downloads		scoring_parte_1.csv	ZET-debug.log
+Library			scoring_parte_2.csv	ZohoDatabridge
+Movies			scoring_parte_3.csv
+Music			scoring_parte_4.csv
+guidoalvarez@MacBook-Air-de-Guido ~ % cd Desktop
+guidoalvarez@MacBook-Air-de-Guido Desktop % ls
+Alvarez_Guido.c	output		Projects
+Musica		Programacion	TEST.py
+guidoalvarez@MacBook-Air-de-Guido Desktop % cd ..          
+guidoalvarez@MacBook-Air-de-Guido ~ % cd Documents
+guidoalvarez@MacBook-Air-de-Guido Documents % ls
+Analytics_CRM_CSV.rtf
+Captura de pantalla 2025-04-24 a la(s) 1.57.39 p. m..png
+Captura de pantalla 2025-04-24 a la(s) 1.57.47 p. m..png
+Captura de pantalla 2025-05-28 a la(s) 8.41.27 a. m..png
+Captura de pantalla 2025-06-05 a la(s) 10.40.31 a. m..png
+Captura de pantalla 2025-06-18 a la(s) 10.46.45 a. m..png
+Captura de pantalla 2025-06-18 a la(s) 10.47.52 a. m..png
+Captura de pantalla 2025-07-01 a la(s) 10.52.07 a. m..png
+Captura de pantalla 2025-07-01 a la(s) 10.59.14 a. m..png
+Captura de pantalla 2025-07-01 a la(s) 11.24.03 a. m..png
+Captura de pantalla 2025-07-16 a la(s) 11.53.29 a. m..png
+Captura de pantalla 2025-07-29 a la(s) 9.02.45 a. m..png
+Captura de pantalla 2025-07-29 a la(s) 9.04.07 a. m..png
+Captura de pantalla 2025-08-01 a la(s) 10.05.30 a. m..png
+Captura de pantalla 2025-08-18 a la(s) 10.07.56 a. m..png
+Captura de pantalla 2025-09-05 a la(s) 9.56.35 a. m..png
+Captura de pantalla 2025-09-11 a la(s) 11.08.29 a. m..png
+Captura de pantalla 2025-09-15 a la(s) 10.05.35 a. m..png
+Captura de pantalla 2025-09-16 a la(s) 10.46.58 a. m..png
+Captura de pantalla 2025-09-18 a la(s) 9.47.51 a. m..png
+Captura de pantalla 2025-09-23 a la(s) 8.00.13 p. m..png
+Captura de pantalla 2025-09-23 a la(s) 8.00.23 p. m..png
+Captura de pantalla 2025-09-23 a la(s) 8.12.19 p. m..png
+Captura de pantalla 2025-09-24 a la(s) 10.52.17 a. m..png
+Captura de pantalla 2025-09-25 a la(s) 9.09.52 a. m..png
+Captura de pantalla 2025-10-15 a la(s) 10.20.50 a. m..png
+Captura de pantalla 2025-10-20 a la(s) 11.28.01 a. m..png
+Captura de pantalla 2025-10-21 a la(s) 10.43.40 a. m..png
+Captura de pantalla 2025-10-21 a la(s) 2.23.29 p. m..png
+Captura de pantalla 2025-10-23 a la(s) 8.35.25 a. m..png
+Captura de pantalla 2025-10-30 a la(s) 9.24.04 p. m..png
+Captura de pantalla 2025-11-11 a la(s) 12.35.01 p. m..png
+Captura de pantalla 2025-11-27 a la(s) 10.42.17 a. m..png
+Captura de pantalla 2026-06-17 a la(s) 8.25.56 p. m..png
+categoria producto CCI.rtf
+Databridge
+Ejemplo XML.rtf
+Enviar_Certificado_BackUP.rtf
+fillablePDF.rtf
+Grabación de pantalla 2025-07-29 a la(s) 9.06.26 a. m..mov
+Integracion_Analytics_CRM.rtf
+Programacion
+rekordbox
+sync inventariopro.rtf
+sync_tipodecuenta_cci.rtf
+test.csv
+update_contactos CCI.rtf
+update_nombre_beneficio_historico.rtf
+update_nombre_beneficio_wf.rtf
+validarIBAN.rtf
+ZohoWidget
+guidoalvarez@MacBook-Air-de-Guido Documents % cd Programacion
+guidoalvarez@MacBook-Air-de-Guido Programacion % cd Programacion 2
+cd: no such file or directory: /Users/guidoalvarez/Documents/2
+guidoalvarez@MacBook-Air-de-Guido Programacion % ls
+Alvarez_Guido.c			Programacion 2
+Ej Punteros			test.html
+Ejercitacion Estructuras	TP1
+Ejercitacion Matrices		Untitled-1
+output				Untitled-1.c
+Parcial PROG			Untitled-1.dSYM
+guidoalvarez@MacBook-Air-de-Guido Programacion % cd Programacion*2
+guidoalvarez@MacBook-Air-de-Guido Programacion 2 % ls
+AlvarezGuido.c	Bases de Datos	Prog 2
+guidoalvarez@MacBook-Air-de-Guido Programacion 2 % git clone https://github.com/gvarone/Columbia-Viajes.git
+Clonando en 'Columbia-Viajes'...
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+Recibiendo objetos: 100% (3/3), listo.
+guidoalvarez@MacBook-Air-de-Guido Programacion 2 % ls
+AlvarezGuido.c	Bases de Datos	Columbia-Viajes	Prog 2
+guidoalvarez@MacBook-Air-de-Guido Programacion 2 % cd Columbia-Viajes
+guidoalvarez@MacBook-Air-de-Guido Columbia-Viajes % ls
+README.md
+guidoalvarez@MacBook-Air-de-Guido Columbia-Viajes % less readme.md
+guidoalvarez@MacBook-Air-de-Guido Columbia-Viajes % pwd
+/Users/guidoalvarez/Documents/Programacion/Programacion 2/Columbia-Viajes
+guidoalvarez@MacBook-Air-de-Guido Columbia-Viajes % ls
+ColumbiaViajes	README.md
+guidoalvarez@MacBook-Air-de-Guido Columbia-Viajes % nano .gitignore
+
+  UW PICO 5.09                    File: .gitignore                    Modified  
+
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup 
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+# NetBeans
+nbproject/private/
+nbproject/Makefile-*.mk
+nbproject/Package-*.bash
+build/
+nbbuild/
+dist/   
+
+^G Get Help  ^O WriteOut  ^R Read File ^Y Prev Pg   ^K Cut Text  ^C Cur Pos   
+^X Exit      ^J Justify   ^W Where is  ^V Next Pg   ^U UnCut Text^T To Spell  
