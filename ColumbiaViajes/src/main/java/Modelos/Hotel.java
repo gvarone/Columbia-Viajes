@@ -9,24 +9,24 @@ public class Hotel implements Serializable{
     private String direccion;
     private String ciudad;
     private String telefono;
-    private int plazas_disponibles;
-    private final int plazas_totales;
+    private int plazasDisponibles;
+    private final int plazasTotales;
 
     public Hotel(int codigo, String nombre, int plazas_totales) {
         this.codigo = codigo;
         this.nombre = nombre;
-        this.plazas_totales = plazas_totales;
+        this.plazasTotales = plazas_totales;
     }
 
     public Hotel(int codigo, String nombre, String direccion, String ciudad, String telefono,
-            int plazas_disponibles, int plazas_totales) {
+            int plazasDisponibles, int plazasTotales) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.direccion = direccion;
         this.ciudad = ciudad;
         this.telefono = telefono;
-        this.plazas_disponibles = plazas_disponibles;
-        this.plazas_totales = plazas_totales;
+        this.plazasDisponibles = plazasDisponibles;
+        this.plazasTotales = plazasTotales;
     }
 
     public int getCodigo() {
@@ -50,11 +50,11 @@ public class Hotel implements Serializable{
     }
 
     public int getPlazasDisponibles() {
-        return plazas_disponibles;
+        return plazasDisponibles;
     }
 
     public final int getPlazasTotales() {
-        return plazas_totales;
+        return plazasTotales;
     }
 
     public void setNombre(String nombre) {
@@ -74,10 +74,10 @@ public class Hotel implements Serializable{
     }
 
     public void reservarPlaza() {
-        this.plazas_disponibles -= 1;
+        this.plazasDisponibles -= 1;
     }
     
     public void liberarPlaza() {
-        this.plazas_disponibles += 1;
+        this.plazasDisponibles += 1;
     }
 }

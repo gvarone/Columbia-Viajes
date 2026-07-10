@@ -9,21 +9,21 @@ public class Vuelo implements Serializable {
     private int codigo;
     private String origen;
     private String destino;
-    private final int plazas_totales;
-    private final int plazas_turista;
-    private int plazas_turista_disponibles;
-    private int plazas_primera_disponibles;
+    private final int plazasTotales;
+    private final int plazasTurista;
+    private int plazasTuristaDisponibles;
+    private int plazasPrimeraDisponibles;
     private LocalDateTime fecha_hora;
 
-    public Vuelo(int codigo, String origen, String destino, int plazas_totales, 
-            int plazas_turista, LocalDateTime fecha_hora) {
+    public Vuelo(int codigo, String origen, String destino, int plazasTotales, 
+            int plazasTurista, LocalDateTime fecha_hora) {
         this.codigo = codigo;
         this.origen = origen;
         this.destino = destino;
-        this.plazas_totales = plazas_totales;
-        this.plazas_turista = plazas_turista;
-        this.plazas_turista_disponibles = plazas_turista;
-        this.plazas_primera_disponibles = plazas_totales - plazas_turista;
+        this.plazasTotales = plazasTotales;
+        this.plazasTurista = plazasTurista;
+        this.plazasTuristaDisponibles = plazasTurista;
+        this.plazasPrimeraDisponibles = plazasTotales - plazasTurista;
         this.fecha_hora = fecha_hora;
         
     }
@@ -45,11 +45,11 @@ public class Vuelo implements Serializable {
     }
 
     public int getPlazasTotales() {
-        return plazas_totales;
+        return plazasTotales;
     }
 
     public int getPlazasTurista() {
-        return plazas_turista;
+        return plazasTurista;
     }
 
     public void setOrigen(String origen) {
@@ -65,7 +65,7 @@ public class Vuelo implements Serializable {
     }
 
     public int getPlazasTuristaDisponibles() {
-        return plazas_turista_disponibles;
+        return plazasTuristaDisponibles;
     }
 
     public void setCodigo(int codigo) {
