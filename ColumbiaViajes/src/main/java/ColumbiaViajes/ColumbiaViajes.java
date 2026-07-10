@@ -1,5 +1,5 @@
 
-package com.project.columbiaviajes;
+package ColumbiaViajes;
 
 public class ColumbiaViajes {
 

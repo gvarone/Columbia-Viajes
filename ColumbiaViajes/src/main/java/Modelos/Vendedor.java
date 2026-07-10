@@ -1,6 +1,6 @@
-package com.project.columbiaviajes.modelo;
+package Modelos;
 
-import com.project.columbiaviajes.enums.Rol;
+import Enums.Rol;
 
 public class Vendedor extends Usuario {
 

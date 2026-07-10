@@ -1,5 +1,5 @@
 
-package com.project.columbiaviajes.modelo;
+package Modelos;
 
 import java.io.Serializable;
 

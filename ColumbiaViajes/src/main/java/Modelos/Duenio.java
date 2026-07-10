@@ -1,7 +1,7 @@
 
-package com.project.columbiaviajes.modelo;
+package Modelos;
 
-import com.project.columbiaviajes.enums.Rol;
+import Enums.Rol;
 
 public class Duenio extends Usuario {
     public Duenio(int codigo, String nombre, String apellido, String contrasenia) {

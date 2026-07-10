@@ -1,5 +1,5 @@
 
-package com.project.columbiaviajes.enums;
+package Enums;
 
 public enum Rol {
     DUENIO,
