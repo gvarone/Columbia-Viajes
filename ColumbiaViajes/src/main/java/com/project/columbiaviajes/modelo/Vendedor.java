@@ -11,7 +11,7 @@ public class Vendedor extends Usuario {
         this.total_facturado = 0.0;
     }
 
-    public double getTotalFacturado(){
+    public double getTotalFacturado() {
         return this.total_facturado;
     }
 
