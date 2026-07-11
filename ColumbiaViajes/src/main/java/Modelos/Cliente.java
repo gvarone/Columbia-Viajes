@@ -4,7 +4,9 @@ import Enums.Rol;
 
 public class Cliente extends Usuario {
 
-    private int codTurista;
+    private final int codTurista;
+    
+    private boolean isEliminado = false;
 
     public Cliente(int codigo, String nombre, String apellido, String contrasenia,
             int codTurista) {

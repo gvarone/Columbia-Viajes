@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 
 
 public class Vuelo implements Serializable {
-    private int codigo;
+    private final int codigo;
     private String origen;
     private String destino;
     private final int plazasTotales;
@@ -14,6 +14,7 @@ public class Vuelo implements Serializable {
     private int plazasTuristaDisponibles;
     private int plazasPrimeraDisponibles;
     private LocalDateTime fecha_hora;
+    private boolean isEliminado = false;
 
     public Vuelo(int codigo, String origen, String destino, int plazasTotales, 
             int plazasTurista, LocalDateTime fecha_hora) {
@@ -25,7 +26,6 @@ public class Vuelo implements Serializable {
         this.plazasTuristaDisponibles = plazasTurista;
         this.plazasPrimeraDisponibles = plazasTotales - plazasTurista;
         this.fecha_hora = fecha_hora;
-        
     }
 
     public int getCodigo() {
@@ -66,10 +66,6 @@ public class Vuelo implements Serializable {
 
     public int getPlazasTuristaDisponibles() {
         return plazasTuristaDisponibles;
-    }
-
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
     }
     
     

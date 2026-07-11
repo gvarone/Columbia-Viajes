@@ -4,11 +4,12 @@ package Modelos;
 import java.io.Serializable;
 
 public class Hotel implements Serializable{
-    private int codigo;
+    private final int codigo;
     private String nombre;
     private String direccion;
     private String ciudad;
     private String telefono;
+    private boolean isEliminado = false;
     private int plazasDisponibles;
     private final int plazasTotales;
 

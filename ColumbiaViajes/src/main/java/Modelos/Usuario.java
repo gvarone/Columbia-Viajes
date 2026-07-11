@@ -5,11 +5,12 @@ import java.io.Serializable;
 
 public abstract class Usuario implements Serializable {
 
-    private int codigo;
+    private final int codigo;
     private String nombre;
     private String apellido;
     private String contrasenia;
     private Rol rol;
+    private boolean isEliminado = false;
 
     public Usuario(int codigo, String nombre, String apellido, String contrasenia, Rol rol) {
         this.codigo = codigo;
