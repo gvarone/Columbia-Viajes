@@ -1,17 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package views;
+
+package Views;
 
 import java.util.Scanner;
 
-/**
- *
- * @author Ramiro
- */
 public class VendedorMenuVista implements MenuVista {
     private Scanner entrada;
+    
+    public VendedorMenuVista() {
+        this.entrada = new Scanner(System.in);
+    }
     
     @Override
     public void mostrarMenu() {
@@ -23,7 +20,6 @@ public class VendedorMenuVista implements MenuVista {
 
     @Override
     public int leerOpcion() {
-        entrada = new Scanner(System.in);
         int opt = 0;
         boolean esValido = false;
         
