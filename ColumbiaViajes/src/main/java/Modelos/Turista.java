@@ -5,7 +5,7 @@ import java.io.Serializable;
 
 
 public class Turista implements Serializable {
-    private int codigo;
+    private final int codigo;
     private String nombre;
     private String apellido;
     private String direccion;
