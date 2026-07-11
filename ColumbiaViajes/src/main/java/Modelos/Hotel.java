@@ -9,7 +9,7 @@ public class Hotel implements Serializable{
     private String direccion;
     private String ciudad;
     private String telefono;
-    private boolean isEliminado = false;
+    private boolean eliminado = false;
     private int plazasDisponibles;
     private final int plazasTotales;
 
@@ -28,6 +28,10 @@ public class Hotel implements Serializable{
         this.telefono = telefono;
         this.plazasDisponibles = plazasDisponibles;
         this.plazasTotales = plazasTotales;
+    }
+    
+    public boolean isEliminado(){
+        return eliminado;
     }
 
     public int getCodigo() {

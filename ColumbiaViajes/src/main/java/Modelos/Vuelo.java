@@ -14,7 +14,7 @@ public class Vuelo implements Serializable {
     private int plazasTuristaDisponibles;
     private int plazasPrimeraDisponibles;
     private LocalDateTime fecha_hora;
-    private boolean isEliminado = false;
+    private boolean eliminado = false;
 
     public Vuelo(int codigo, String origen, String destino, int plazasTotales, 
             int plazasTurista, LocalDateTime fecha_hora) {
@@ -26,6 +26,14 @@ public class Vuelo implements Serializable {
         this.plazasTuristaDisponibles = plazasTurista;
         this.plazasPrimeraDisponibles = plazasTotales - plazasTurista;
         this.fecha_hora = fecha_hora;
+    }
+    
+    public boolean isEliminado(){
+        return eliminado;
+    }
+    
+    public void eliminar(){
+        this.eliminado = true;
     }
 
     public int getCodigo() {

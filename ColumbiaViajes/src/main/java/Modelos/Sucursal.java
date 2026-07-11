@@ -8,12 +8,22 @@ public class Sucursal implements Serializable {
     private String direccion;
     private String email;
     private String telefono;
+    private boolean eliminado = false;
+
     
     public Sucursal(int codigo, String direccion, String email, String telefono) {
         this.codigo = codigo;
         this.direccion = direccion;
         this.email = email;
         this.telefono = telefono;
+    }
+    
+    public boolean isEliminado(){
+        return eliminado;
+    }
+    
+    public void eliminar(){
+        this.eliminado = true;
     }
     
     public int getCodigo(){

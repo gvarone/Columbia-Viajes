@@ -10,7 +10,7 @@ public abstract class Usuario implements Serializable {
     private String apellido;
     private String contrasenia;
     private Rol rol;
-    private boolean isEliminado = false;
+    private boolean eliminado = false;
 
     public Usuario(int codigo, String nombre, String apellido, String contrasenia, Rol rol) {
         this.codigo = codigo;
@@ -18,6 +18,14 @@ public abstract class Usuario implements Serializable {
         this.apellido = apellido;
         this.contrasenia = contrasenia;
         this.rol = rol;
+    }
+    
+    public boolean isEliminado(){
+        return eliminado;
+    }
+    
+    public void eliminar(){
+        this.eliminado = true;
     }
 
     public boolean validarContrasenia(String intento) {

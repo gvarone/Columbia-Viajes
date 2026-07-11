@@ -80,10 +80,6 @@ public class Paquete implements Serializable {
     public void setHospedaje(Hospedaje hospedaje) {
         this.hospedaje = hospedaje;
     }
-
-    public void setClase(Clase clase) {
-        this.clase = clase;
-    }
     
     public void agregarVuelo(Integer codVuelo, Clase clase) {
         this.codVuelo = codVuelo;
