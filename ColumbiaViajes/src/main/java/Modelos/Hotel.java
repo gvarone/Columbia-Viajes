@@ -33,6 +33,10 @@ public class Hotel implements Serializable{
     public boolean isEliminado(){
         return eliminado;
     }
+    
+    public void eliminar(){
+        this.eliminado = true;
+    }
 
     public int getCodigo() {
         return codigo;
