@@ -33,8 +33,8 @@ public class HotelDAO extends DAO<Hotel> {
     Function<Hotel, String> formateador = hotel -> {
         return hotel.getCodigo() + ";" + hotel.getNombre() + ";" + 
                 hotel.getDireccion() + ";" + hotel.getCiudad() + ";" +
-                hotel.getTelefono() + ";" + hotel.getPlazasTotales() + ";" + 
-                hotel.getPlazasDisponibles() + ";" + hotel.isEliminado() + ";";
+                hotel.getTelefono() + ";" + hotel.getPlazasDisponibles() + ";" + 
+                hotel.getPlazasTotales() + ";" + hotel.isEliminado();
     };
     
     public int obtenerUltimoCodigo() {

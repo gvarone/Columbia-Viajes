@@ -1,12 +1,12 @@
 
 package DAOs;
 
+import Enums.Rol;
 import Modelos.Usuario;
 import Modelos.Cliente;
 import Modelos.Administrador;
 import Modelos.Vendedor;
 import Modelos.Duenio;
-import Enums.Rol;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
@@ -67,6 +67,7 @@ public class UsuarioDAO extends DAO<Usuario> {
         
         return linea;
     };
+    
     
     public int obtenerUltimoCodigo() {
         List<Usuario> usuarios = leerTodos(mapeador);
