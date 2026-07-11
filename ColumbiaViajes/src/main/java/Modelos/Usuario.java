@@ -61,5 +61,9 @@ public abstract class Usuario implements Serializable {
     public String getApellido() {
         return apellido;
     }
+    
+    public String getContrasenia() {
+        return contrasenia;
+    }
 
 }
