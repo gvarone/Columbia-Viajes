@@ -9,9 +9,9 @@ public class Cliente extends Usuario {
     private boolean eliminado = false;
 
     public Cliente(int codigo, String nombre, String apellido, String contrasenia,
-            int codTurista) {
+            int codTurista, String username) {
 
-        super(codigo, nombre, apellido, contrasenia, Rol.CLIENTE);
+        super(codigo, nombre, apellido, contrasenia, Rol.CLIENTE, username);
         this.codTurista = codTurista;
     }
 

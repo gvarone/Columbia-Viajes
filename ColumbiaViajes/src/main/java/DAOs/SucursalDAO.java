@@ -35,7 +35,6 @@ public class SucursalDAO extends DAO<Sucursal> {
     
     public Sucursal obtenerPorCodigo(int codigo) {
         List<Sucursal> todas = leerTodos();
-        List<Sucursal> resultado = new ArrayList<>();
         for (Sucursal s : todas) {
             if (s.getCodigo() == codigo) {
                 return s;
