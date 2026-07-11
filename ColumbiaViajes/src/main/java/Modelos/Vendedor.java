@@ -6,8 +6,9 @@ public class Vendedor extends Usuario {
 
     private double totalFacturado;
 
-    public Vendedor(int codigo, String nombre, String apellido, String contrasenia) {
-        super(codigo, nombre, apellido, contrasenia, Rol.VENDEDOR);
+    public Vendedor(int codigo, String nombre, String apellido, String contrasenia,
+            String username) {
+        super(codigo, nombre, apellido, contrasenia, Rol.VENDEDOR, username);
         this.totalFacturado = 0.0;
     }
 
