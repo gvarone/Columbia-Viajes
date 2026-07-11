@@ -27,6 +27,18 @@ public class Hotel{
         this.telefono = telefono;
         this.plazasDisponibles = plazasDisponibles;
         this.plazasTotales = plazasTotales;
+    }    
+    
+    public Hotel(int codigo, String nombre, String direccion, String ciudad, String telefono, boolean eliminado,
+            int plazasDisponibles, int plazasTotales) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.ciudad = ciudad;
+        this.telefono = telefono;
+        this.eliminado = eliminado;
+        this.plazasDisponibles = plazasDisponibles;
+        this.plazasTotales = plazasTotales;
     }
     
     public boolean isEliminado(){

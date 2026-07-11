@@ -44,6 +44,16 @@ public abstract class DAO<T> {
             throw new RuntimeException("Error al guardar los datos en " + ruta, e);
         }
     }
+    
+    protected void guardarUno(T entidad, Function<T, String> formateador){
+        try{
+            String linea = formateador.apply(entidad);
+            
+            Files.write(Paths.get(ruta), List.of(linea), StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+        } catch (IOException e){
+            throw new RuntimeException("Error al guardar los datos en " + ruta, e);
+        }
+    }
 
     /*
     protected void registrar(T item) {

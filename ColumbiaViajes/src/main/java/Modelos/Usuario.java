@@ -1,9 +1,8 @@
 package Modelos;
 
 import Enums.Rol;
-import java.io.Serializable;
 
-public abstract class Usuario implements Serializable {
+public abstract class Usuario{
 
     private final int codigo;
     private String nombre;
@@ -21,6 +20,16 @@ public abstract class Usuario implements Serializable {
         this.rol = rol;
         this.username = username;
     }
+    
+    public Usuario(int codigo, String nombre, String apellido, String contrasenia, Rol rol, String username, boolean eliminado) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.contrasenia = contrasenia;
+        this.rol = rol;
+        this.username = username;
+        this.eliminado = eliminado;
+    }    
     
     public String getUsername(){
         return username;
