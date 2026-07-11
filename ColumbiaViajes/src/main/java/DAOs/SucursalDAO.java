@@ -4,6 +4,7 @@ package DAOs;
 import Modelos.Sucursal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 
 public class SucursalDAO extends DAO<Sucursal> {
     
@@ -11,8 +12,23 @@ public class SucursalDAO extends DAO<Sucursal> {
         super(CARPETA_DATOS + "sucursales.dat");
     }
     
+    Function<String, Sucursal> mapeador = linea ->{
+        String[] datos = linea.split(";");
+        
+        int codigo = Integer.parseInt(datos[0].trim());
+        String direccion = datos[1].trim();
+        String email = datos[2].trim();
+        String telefono = datos[3].trim();
+        
+        return new Sucursal(codigo, direccion, email, telefono);
+    };
+    
+    Function<Sucursal, String> formateador = sucursal -> {
+        return sucursal.getCodigo() + ";" + sucursal.getDireccion() + ";" + sucursal.getEmail() + ";" + sucursal.getTelefono() + ";";
+    };
+    
     public int obtenerUltimoCodigo() {
-        List<Sucursal> sucursales = leerTodos();
+        List<Sucursal> sucursales = leerTodos(mapeador);
         int maximo = 0;
         for (Sucursal s : sucursales) {
             if (s.getCodigo() > maximo) {
@@ -23,7 +39,7 @@ public class SucursalDAO extends DAO<Sucursal> {
     }
     
     public List<Sucursal> listar() {
-        List<Sucursal> todas = leerTodos();
+        List<Sucursal> todas = leerTodos(mapeador);
         List<Sucursal> resultado = new ArrayList<>();
         for (Sucursal s : todas) {
             if (!s.isEliminado()) {
@@ -34,7 +50,7 @@ public class SucursalDAO extends DAO<Sucursal> {
     }
     
     public Sucursal obtenerPorCodigo(int codigo) {
-        List<Sucursal> todas = leerTodos();
+        List<Sucursal> todas = leerTodos(mapeador);
         List<Sucursal> resultado = new ArrayList<>();
         for (Sucursal s : todas) {
             if (s.getCodigo() == codigo) {

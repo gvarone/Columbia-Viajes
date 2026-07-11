@@ -1,11 +1,14 @@
 package DAOs;
 
-import java.io.Serializable;
-import java.io.*;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 
-public abstract class DAO<T extends Serializable> {
+public abstract class DAO<T> {
 
     protected static final String CARPETA_DATOS = "data/";
     private String ruta;
@@ -14,33 +17,39 @@ public abstract class DAO<T extends Serializable> {
         this.ruta = ruta;
     }
 
-    protected List<T> leerTodos() {
-        File archivo = new File(ruta);
+    protected List<T> leerTodos(Function<String, T> mapeador) {
+        List<T> listaResultado = new ArrayList<>();
 
-        if (!archivo.exists()) {
-            return new ArrayList<>();
-        }
+        try {
+            listaResultado = Files.lines(Paths.get(ruta))
+                    .map(mapeador)
+                    .toList();
 
-        try (FileInputStream fis = new FileInputStream(archivo); ObjectInputStream ois = new ObjectInputStream(fis)) {
-            return (List<T>) ois.readObject();
-
-        } catch (IOException | ClassNotFoundException e) {
+        } catch (IOException e) {
             throw new RuntimeException("Error al leer los datos desde " + ruta, e);
         }
+        
+        return listaResultado;
     }
 
-    protected void guardarTodos(List<T> lista) {
-        try (FileOutputStream fos = new FileOutputStream(ruta); ObjectOutputStream oos = new ObjectOutputStream(fos)) {
-            oos.writeObject(lista);
+    protected void guardarTodos(List<T> lista, Function<T, String> formateador) {
+        try {
+            List<String> lineas = lista.stream()
+                    .map(formateador)
+                    .toList();
+            
+            Files.write(Paths.get(ruta), lineas, StandardOpenOption.CREATE, StandardOpenOption.APPEND);
 
         } catch (IOException e) {
             throw new RuntimeException("Error al guardar los datos en " + ruta, e);
         }
     }
 
+    /*
     protected void registrar(T item) {
         List<T> actuales = leerTodos();
         actuales.add(item);
         guardarTodos(actuales);
     }
+    */
 }

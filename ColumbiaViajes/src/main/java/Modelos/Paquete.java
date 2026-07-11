@@ -3,10 +3,9 @@ package Modelos;
 
 import Enums.Hospedaje;
 import Enums.Clase;
-import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Paquete implements Serializable {
+public class Paquete{
     private final int codigo;
     private int codTurista;
     private int codVendedor;

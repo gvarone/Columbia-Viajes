@@ -1,9 +1,8 @@
 
 package Modelos;
 
-import java.io.Serializable;
 
-public class Sucursal implements Serializable {
+public class Sucursal{
     private final int codigo;
     private String direccion;
     private String email;

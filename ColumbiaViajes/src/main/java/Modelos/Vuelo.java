@@ -1,11 +1,10 @@
 
 package Modelos;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 
 
-public class Vuelo implements Serializable {
+public class Vuelo{
     private final int codigo;
     private String origen;
     private String destino;

@@ -1,10 +1,8 @@
 
 package Modelos;
 
-import java.io.Serializable;
 
-
-public class Turista implements Serializable {
+public class Turista{
     private final int codigo;
     private String nombre;
     private String apellido;
