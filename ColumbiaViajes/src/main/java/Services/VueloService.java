@@ -3,6 +3,7 @@ package Services;
 import DAOs.VueloDAO;
 import Modelos.Vuelo;
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class VueloService {
     private VueloDAO vueloDAO;
@@ -19,4 +20,19 @@ public class VueloService {
         vueloDAO.registrar(vuelo);
         return vuelo;
     }
+
+    public void listarDisponibilidad(){
+        List<Vuelo> vuelos = vueloDAO.listar();
+
+        if (vuelos.size() == 0) {
+            System.out.println("No hay vuelos disponibles actualmente");
+            return;
+        }
+
+        for(Vuelo v : vuelos){
+            if(v.getAsientosTuristaDisponibles() > 0 || v.getAsientosPrimeraDisponibles() > 0){
+                System.out.println("Origen: " + v.getOrigen() + " | Destino: " + v.getDestino() + " | fecha y hora: " + v.getFechaHora() + " | Asientos Turista Disponibles: " + v.getAsientosTuristaDisponibles() + " | Asientos Primera Disponibles: " + v.getAsientosPrimeraDisponibles());
+            }
+        }
+    }    
 }

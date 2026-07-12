@@ -12,6 +12,7 @@ public class DuenioMenuVista extends MenuVistaBase {
     public void mostrarMenu() {
         System.out.println("---Menu Dueños---");
         System.out.println("1- Listar vendedores");
+        System.out.println("0- Salir");
     }
     
 }

@@ -26,7 +26,7 @@ public class VueloDAO extends DAO<Vuelo> {
         int asientosDisponibles = Integer.parseInt(datos[6].trim());
         int asientosTuristaDisponibles = Integer.parseInt(datos[7].trim());
         
-        boolean eliminado = Boolean.parseBoolean(datos[9].trim());
+        boolean eliminado = Boolean.parseBoolean(datos[8].trim());
         
         Vuelo vuelo = new Vuelo(codigo, origen, destino, fechaHora,
                 asientosTotales, asientosTurista);

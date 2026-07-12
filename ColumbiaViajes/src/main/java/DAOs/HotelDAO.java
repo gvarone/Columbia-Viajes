@@ -1,7 +1,6 @@
 package DAOs;
 
 import Modelos.Hotel;
-import Modelos.Sucursal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;

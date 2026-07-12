@@ -78,8 +78,15 @@ public class UsuarioControlador {
         }
         System.out.println("Bienvenido, " + usuario.getNombre());
         asignarMenuSegunRol();
-        if (usuario.getRol() == Enums.Rol.ADMIN) {
-            manejarMenuAdmin();
+        switch (usuario.getRol()) {
+            case ADMIN:
+                manejarMenuAdmin();
+                break;
+            case CLIENTE:
+                manejarMenuCliente();
+                break;
+            default:
+                break;
         }
     }
 
@@ -164,11 +171,34 @@ public class UsuarioControlador {
                     break;
                 case 3:
                     agregarVuelo();
+                    break;
                 case 0:
                     salir = true;
                     break;
                 default:
                     System.out.println("Opción no implementada todavía.");
+            }
+        }
+    }
+
+    private void manejarMenuCliente(){
+        boolean salir = false;
+        while (!salir) {
+            menuVista.mostrarMenu();
+            int opcion = menuVista.leerOpcion();
+            switch (opcion) {
+                case 1:
+                    hotelService.listarDisponibilidad();
+                    break;
+                case 2:
+                    vueloService.listarDisponibilidad();
+                    break;
+                case 0:
+                    salir = true;
+                    break;
+                default:
+                    System.out.println("Opción inexistente");
+                    break;
             }
         }
     }

@@ -1,5 +1,7 @@
 
 package Services;
+import java.util.List;
+
 import DAOs.HotelDAO;
 import Modelos.Hotel;
 
@@ -10,7 +12,7 @@ public class HotelService {
         this.hotelDAO = new HotelDAO();
     }
     
-     public Hotel registrar(String nombre, String direccion, String email,
+    public Hotel registrar(String nombre, String direccion, String email,
             String telefono, int plazasTotales) {
         if (hotelDAO.obtenerPorNombre(nombre) != null) {
             throw new RuntimeException("Ya existe una hotel con ese nombre");
@@ -19,5 +21,20 @@ public class HotelService {
         Hotel hotel = new Hotel(codigo, nombre, direccion, email, telefono, plazasTotales);
         hotelDAO.registrar(hotel);
         return hotel;
+    }
+
+    public void listarDisponibilidad(){
+        List<Hotel> hoteles = hotelDAO.listar();
+
+        if (hoteles.size() == 0) {
+            System.out.println("No hay hoteles disponibles actualmente");
+            return;
+        }
+
+        for(Hotel h : hoteles){
+            if(h.getPlazasDisponibles() > 0){
+                System.out.println("Nombre: " + h.getNombre() + " | Ciudad: " + h.getCiudad() + " | Telefono: " + h.getTelefono() + " | Disponibilidad: " + h.getPlazasDisponibles());
+            }
+        }
     }
 }

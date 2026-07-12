@@ -27,5 +27,6 @@ public class AdminMenuVista extends MenuVistaBase {
         System.out.println("14- Eliminar vuelos");
         System.out.println("15- Eliminar clientes/turistas");
         System.out.println("16- Asignar un rol a un usuario");
+        System.out.println("0- Salir");
     } 
 }
