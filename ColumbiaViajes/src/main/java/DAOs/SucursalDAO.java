@@ -9,22 +9,30 @@ import java.util.function.Function;
 public class SucursalDAO extends DAO<Sucursal> {
     
     public SucursalDAO() {
-        super(CARPETA_DATOS + "sucursales.dat");
+        super(CARPETA_DATOS + "sucursales.txt");
     }
     
     Function<String, Sucursal> mapeador = linea ->{
         String[] datos = linea.split(";");
         
         int codigo = Integer.parseInt(datos[0].trim());
-        String direccion = datos[1].trim();
-        String email = datos[2].trim();
-        String telefono = datos[3].trim();
+        String nombre = datos[1].trim();
+        String direccion = datos[2].trim();
+        String email = datos[3].trim();
+        String telefono = datos[4].trim();
+        boolean eliminado = Boolean.parseBoolean(datos[5].trim());
         
-        return new Sucursal(codigo, direccion, email, telefono);
+        Sucursal sucursal = new Sucursal(codigo, nombre, direccion, email, telefono);
+        if (eliminado) {
+            sucursal.eliminar();
+        }
+        return sucursal;
     };
     
     Function<Sucursal, String> formateador = sucursal -> {
-        return sucursal.getCodigo() + ";" + sucursal.getDireccion() + ";" + sucursal.getEmail() + ";" + sucursal.getTelefono() + ";";
+        return sucursal.getCodigo() + ";" + sucursal.getDireccion() + ";" + 
+                sucursal.getEmail() + ";" + sucursal.getTelefono() + ";" +
+                sucursal.isEliminado();
     };
     
     public int obtenerUltimoCodigo() {
@@ -70,5 +78,19 @@ public class SucursalDAO extends DAO<Sucursal> {
             }
         }
         return null;
+    }
+    
+    public Sucursal obtenerPorNombre(String nombre){
+        List<Sucursal> todas = leerTodos(mapeador);
+        for (Sucursal s: todas){
+            if(!s.isEliminado() && s.getNombre().equals(nombre)){
+                return s;
+            }
+        }
+        return null;
+    }
+   
+    public void registrar(Sucursal sucursal) {
+        super.registrar(sucursal, mapeador, formateador);
     }
 }

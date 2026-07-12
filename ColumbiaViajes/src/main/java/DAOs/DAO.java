@@ -3,9 +3,9 @@ package DAOs;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -13,35 +13,41 @@ import java.util.function.Predicate;
 public abstract class DAO<T> {
 
     protected static final String CARPETA_DATOS = "data/";
-    private String ruta;
+    private final String ruta;
 
     public DAO(String ruta) {
         this.ruta = ruta;
     }
 
     protected List<T> leerTodos(Function<String, T> mapeador) {
-        List<T> listaResultado = new ArrayList<>();
-
+        Path path = Paths.get(ruta);
+        if (!Files.exists(path)) {
+            return new ArrayList<>();
+        }
         try {
-            listaResultado = Files.lines(Paths.get(ruta))
+            return Files.lines(path)
                     .map(mapeador)
-                    .toList();
-
+                    .collect(java.util.stream.Collectors.toList());
         } catch (IOException e) {
             throw new RuntimeException("Error al leer los datos desde " + ruta, e);
         }
-        
-        return listaResultado;
     }
 
     protected void guardarTodos(List<T> lista, Function<T, String> formateador) {
         try {
+            Path path = Paths.get(ruta);
+            if (path.getParent() != null) {
+                Files.createDirectories(path.getParent());
+            }
             List<String> lineas = lista.stream()
                     .map(formateador)
                     .toList();
             
             Files.write(Paths.get(ruta), lineas);
 
+            Files.write(path, lineas,
+                    StandardOpenOption.CREATE,
+                    StandardOpenOption.TRUNCATE_EXISTING);
         } catch (IOException e) {
             throw new RuntimeException("Error al guardar los datos en " + ruta, e);
         }
@@ -78,11 +84,9 @@ public abstract class DAO<T> {
         }
     }
 
-    /*
-    protected void registrar(T item) {
-        List<T> actuales = leerTodos();
+    protected void registrar(T item, Function<String, T> mapeador, Function<T, String> formateador) {
+        List<T> actuales = leerTodos(mapeador);
         actuales.add(item);
-        guardarTodos(actuales);
+        guardarTodos(actuales, formateador);
     }
-    */
 }

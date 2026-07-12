@@ -8,7 +8,7 @@ import java.util.function.Function;
 
 public class HotelDAO extends DAO<Hotel> {
     public HotelDAO() {
-        super(CARPETA_DATOS + "hoteles.dat");
+        super(CARPETA_DATOS + "hoteles.txt");
     }
     
     Function<String, Hotel> mapeador = linea ->{
@@ -19,16 +19,24 @@ public class HotelDAO extends DAO<Hotel> {
         String direccion = datos[2].trim();
         String ciudad = datos[3].trim();
         String telefono = datos[4].trim();
-        boolean eliminado = Boolean.parseBoolean(datos[5].trim());
-        int pDisp = Integer.parseInt(datos[6].trim());
-        int pTot = Integer.parseInt(datos[7].trim());
+        int plazasDisponibles = Integer.parseInt(datos[5].trim());
+        int plazasTotales = Integer.parseInt(datos[6].trim());
+        boolean eliminado = Boolean.parseBoolean(datos[7].trim());
         
-        return new Hotel(codigo, nombre, direccion, ciudad, telefono, eliminado, pDisp, pTot);
+        Hotel hotel = new Hotel(codigo, nombre, direccion, ciudad, telefono,
+            plazasDisponibles, plazasTotales);
+        if (eliminado) {
+            hotel.eliminar();
+        }
+        return hotel;
     };
     
     Function<Hotel, String> formateador = hotel -> {
-        return hotel.getCodigo() + ";" + hotel.getNombre() + ";" + hotel.getDireccion() + ";" + hotel.getCiudad() + ";" + hotel.getTelefono() + ";" + hotel.isEliminado() + ";" + hotel.getPlazasDisponibles() + ";" + hotel.getPlazasTotales() + ";";
-    };    
+        return hotel.getCodigo() + ";" + hotel.getNombre() + ";" + 
+                hotel.getDireccion() + ";" + hotel.getCiudad() + ";" +
+                hotel.getTelefono() + ";" + hotel.getPlazasDisponibles() + ";" + 
+                hotel.getPlazasTotales() + ";" + hotel.isEliminado();
+    };
     
     public int obtenerUltimoCodigo() {
         List<Hotel> hoteles = leerTodos(mapeador);
@@ -72,5 +80,19 @@ public class HotelDAO extends DAO<Hotel> {
             }
         }
         return null;
+    }
+    
+    public Hotel obtenerPorNombre(String nombre){
+        List<Hotel> todas = leerTodos(mapeador);
+        for (Hotel h: todas){
+            if(!h.isEliminado() && h.getNombre().equals(nombre)){
+                return h;
+            }
+        }
+        return null;
+    }
+    
+    public void registrar(Hotel hotel) {
+        super.registrar(hotel, mapeador, formateador);
     }
 }

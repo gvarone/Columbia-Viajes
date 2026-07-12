@@ -1,24 +1,19 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package views;
+
+package Views;
 
 import java.util.Scanner;
 
-/**
- *
- * @author Ramiro
- */
-public class AdminMenuVista implements MenuVista {
-    private Scanner entrada;
+public class AdminMenuVista extends MenuVistaBase {    
+    public AdminMenuVista() {
+        this.entrada = new Scanner(System.in);
+    }
     
     @Override
     public void mostrarMenu() {
         System.out.println("---Menu Administradores---");
         System.out.println("1- Agregar una Sucursal");
         System.out.println("2- Agregar un Hotel");
-        System.out.println("3- Agregar un vuelo");
+        System.out.println("3- Agregar un Vuelo");
         System.out.println("4- Listar sucursales");
         System.out.println("5- Listar hoteles");
         System.out.println("6- Listar vuelos");
@@ -32,24 +27,5 @@ public class AdminMenuVista implements MenuVista {
         System.out.println("14- Eliminar vuelos");
         System.out.println("15- Eliminar clientes/turistas");
         System.out.println("16- Asignar un rol a un usuario");
-    }
-
-    @Override
-    public int leerOpcion() {
-        entrada = new Scanner(System.in);
-        int opt = 0;
-        boolean esValido = false;
-        
-        do{
-            try {
-                opt = Integer.parseInt(entrada.nextLine().trim());
-                esValido = true;
-            } catch (NumberFormatException e) {
-                System.out.println("Entrada inválida. Debe ingresar un número entero.");
-            }
-        } while(!esValido);
-        
-        return opt;
-    }
-    
+    } 
 }

@@ -4,14 +4,16 @@ package Modelos;
 
 public class Sucursal{
     private final int codigo;
+    private String nombre;
     private String direccion;
     private String email;
     private String telefono;
     private boolean eliminado = false;
 
     
-    public Sucursal(int codigo, String direccion, String email, String telefono) {
+    public Sucursal(int codigo, String nombre, String direccion, String email, String telefono) {
         this.codigo = codigo;
+        this.nombre = nombre;
         this.direccion = direccion;
         this.email = email;
         this.telefono = telefono;
@@ -28,6 +30,10 @@ public class Sucursal{
     public int getCodigo(){
         return codigo;
     }
+    
+    public String getNombre() {
+        return direccion;
+    }
 
     public String getDireccion() {
         return direccion;
@@ -39,6 +45,10 @@ public class Sucursal{
 
     public String getTelefono() {
         return telefono;
+    }
+    
+    public void setNombre(){
+        this.nombre = nombre;
     }
 
     public void setDireccion(String direccion) {

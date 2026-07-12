@@ -70,5 +70,9 @@ public abstract class Usuario{
     public String getApellido() {
         return apellido;
     }
+    
+    public String getContrasenia() {
+        return contrasenia;
+    }
 
 }
