@@ -3,23 +3,21 @@ package Views;
 
 import java.util.Scanner;
 
-public class ClienteMenuVista extends MenuVistaBase {
-    private Scanner entrada;
-    
-    public ClienteMenuVista() {
+public class VendedorMenuVista extends MenuVistaBase {    
+    public VendedorMenuVista() {
         this.entrada = new Scanner(System.in);
+    }
+    
+    @Override
+    public void mostrarMenu() {
+        System.out.println("---Menu Vendedores---");
+        System.out.println("1- Listar clientes actuales");
+        System.out.println("2- Buscar un cliente por nombre");
+        System.out.println("3- Asignar un paquete a un cliente");
     }
 
     @Override
-    public void mostrarMenu() {
-        System.out.println("---Menu Clientes---");
-        System.out.println("1- Ver hoteles disponibles");
-        System.out.println("2- Ver vuelos disponibles");
-        System.out.println("3- Ver paquetes en propiedad");
-    }
-    
-    @Override
-    public int leerOpcion(){
+    public int leerOpcion() {
         int opt = 0;
         boolean esValido = false;
         
@@ -34,4 +32,5 @@ public class ClienteMenuVista extends MenuVistaBase {
         
         return opt;
     }
+    
 }

@@ -3,21 +3,22 @@ package Views;
 
 import java.util.Scanner;
 
-public class DuenioMenuVista extends MenuVistaBase {
-    private Scanner entrada;
+public class ClienteMenuVista extends MenuVistaBase {
     
-    public DuenioMenuVista() {
+    public ClienteMenuVista() {
         this.entrada = new Scanner(System.in);
-    }
-    
-    @Override
-    public void mostrarMenu() {
-        System.out.println("---Menu Dueños---");
-        System.out.println("1- Listar vendedores");
     }
 
     @Override
-    public int leerOpcion() {
+    public void mostrarMenu() {
+        System.out.println("---Menu Clientes---");
+        System.out.println("1- Ver hoteles disponibles");
+        System.out.println("2- Ver vuelos disponibles");
+        System.out.println("3- Ver paquetes en propiedad");
+    }
+    
+    @Override
+    public int leerOpcion(){
         int opt = 0;
         boolean esValido = false;
         
@@ -32,5 +33,4 @@ public class DuenioMenuVista extends MenuVistaBase {
         
         return opt;
     }
-    
 }

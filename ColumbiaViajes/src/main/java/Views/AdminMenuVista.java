@@ -3,9 +3,7 @@ package Views;
 
 import java.util.Scanner;
 
-public class AdminMenuVista extends MenuVistaBase {
-    private Scanner entrada;
-    
+public class AdminMenuVista extends MenuVistaBase {    
     public AdminMenuVista() {
         this.entrada = new Scanner(System.in);
     }
