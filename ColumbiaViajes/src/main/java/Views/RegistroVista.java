@@ -3,6 +3,8 @@ package Views;
 
 import java.util.Scanner;
 
+import Enums.Rol;
+
 public class RegistroVista {
     private Scanner entrada;
 
@@ -32,5 +34,37 @@ public class RegistroVista {
     public String leerContrasenia() {
         System.out.print("Contraseña: ");
         return entrada.nextLine().trim();
+    }
+
+    public Rol leerRol(){
+        Rol rol;
+
+        System.out.println("Rol: ");
+        System.out.println("1- Cliente");
+        System.out.println("2- Vendedor");
+        System.out.println("3- Administrador");
+        System.out.println("4- Dueño");
+        int sRol = entrada.nextInt();
+        entrada.nextLine();
+
+        switch (sRol) {
+            case 1:
+                rol = Rol.CLIENTE;
+                break;
+            case 2:
+                rol = Rol.VENDEDOR;
+                break;
+            case 3:
+                rol = Rol.ADMIN;
+                break;
+            case 4:
+                rol = Rol.VENDEDOR;
+                break;
+            default:
+                rol = null;
+                break;
+        }
+        
+        return rol;
     }
 }

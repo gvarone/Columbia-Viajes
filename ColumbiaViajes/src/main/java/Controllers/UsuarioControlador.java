@@ -1,8 +1,10 @@
 
 package Controllers;
 
+import Modelos.Turista;
 import Modelos.Usuario;
 import Views.MenuVista;
+import Views.MenuVistaBase;
 import Views.LoginVista;
 import Views.RegistroVista;
 import Views.ClienteMenuVista;
@@ -11,9 +13,12 @@ import Views.AdminMenuVista;
 import Views.DuenioMenuVista;
 import Services.UsuarioService;
 import Services.SucursalService;
+import Services.TuristaService;
 import Services.HotelService;
 import Services.VueloService;
 import java.time.LocalDateTime;
+
+import Enums.Rol;
 
 
 public class UsuarioControlador {
@@ -24,18 +29,27 @@ public class UsuarioControlador {
     private SucursalService sucursalService;
     private HotelService hotelService;
     private VueloService vueloService;
+    private TuristaService turistaService;
     
     public UsuarioControlador() {
         this.usuarioService = new UsuarioService();
         this.sucursalService = new SucursalService();
         this.hotelService = new HotelService();
         this.vueloService = new VueloService();
+        this.turistaService = new TuristaService();
         this.loginVista = new LoginVista();
+        this.menuVista = new MenuVistaBase();
     }
     
     public void iniciar() {
         if (!usuarioService.hayUsuariosRegistrados()) {
             crearPrimerAdministrador();
+        } else{
+            int optRegistro = menuVista.leerEntero("Ingrese 1 si desea registrarse\no cualquiero otro numero para iniciar sesion", true);
+
+            if(optRegistro == 1){
+                crearUsuario();
+            }
         }
         
         usuario = null;
@@ -67,6 +81,43 @@ public class UsuarioControlador {
         if (usuario.getRol() == Enums.Rol.ADMIN) {
             manejarMenuAdmin();
         }
+    }
+
+    private void crearUsuario(){
+        RegistroVista registroVista = new RegistroVista();
+
+        registroVista.mostrarInicio();
+
+        Rol rol = registroVista.leerRol();
+
+        if(rol == null){
+            System.out.println("Rol inexistente");
+            return;
+        }
+
+        String nombre = registroVista.leerNombre();
+        String apellido = registroVista.leerApellido();
+        String username = registroVista.leerUsername();
+        String contraseña = registroVista.leerContrasenia();
+
+        switch (rol) {
+            case CLIENTE:
+                int codTurista = agregarTurista(nombre, apellido);
+                usuarioService.registrarCliente(nombre, apellido, username, contraseña, codTurista);
+                break;
+            case VENDEDOR:
+                usuarioService.registrarVendedor(nombre, apellido, username, contraseña);
+                break;
+            case ADMIN:
+                usuarioService.registrarAdministrador(nombre, apellido, username, contraseña);
+                break;
+            case DUENIO:
+                usuarioService.registrarDuenio(nombre, apellido, username, contraseña);
+                break;
+            default:
+                break;
+        }
+        
     }
     
     private void crearPrimerAdministrador() {
@@ -153,5 +204,15 @@ public class UsuarioControlador {
         vueloService.registrar(origen, destino, fechaHora, asientosTotales, 
                 asientosTurista);
         System.out.println("Vuelo registrado con éxito.");
+    }
+
+    private int agregarTurista(String nombre, String apellido){
+        String direccion = menuVista.leerString("Direccion");
+        String telefono = menuVista.leerString("Telefono");
+        String email = menuVista.leerString("Email");
+        Turista turista = turistaService.registrar(nombre, apellido, direccion, telefono, email);
+        System.out.println("Turista registrado con éxito.");
+
+        return turista.getCodigo();
     }
 }

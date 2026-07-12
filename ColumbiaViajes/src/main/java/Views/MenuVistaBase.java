@@ -6,7 +6,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
-public abstract class MenuVistaBase implements MenuVista {
+public class MenuVistaBase implements MenuVista {
     protected Scanner entrada;
     
     public MenuVistaBase() {
@@ -68,5 +68,10 @@ public abstract class MenuVistaBase implements MenuVista {
                 System.out.println("Formato de fecha inválido.");
             }
         }
+    }
+
+    @Override
+    public void mostrarMenu() {
+        System.out.println("No hay menu actualmente");
     }
 }

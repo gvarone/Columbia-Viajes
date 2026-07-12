@@ -10,7 +10,7 @@ public class SucursalService {
         this.sucursalDAO = new SucursalDAO();
     }
     
-     public Sucursal registrar(String nombre, String direccion, String email,
+    public Sucursal registrar(String nombre, String direccion, String email,
             String telefono) {
         if (sucursalDAO.obtenerPorNombre(nombre) != null) {
             throw new RuntimeException("Ya existe una sucursal con ese nombre");
