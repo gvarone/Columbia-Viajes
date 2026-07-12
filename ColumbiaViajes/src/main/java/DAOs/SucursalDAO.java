@@ -84,9 +84,5 @@ public class SucursalDAO extends DAO<Sucursal> {
     public void modificar(Sucursal sucursal) {
         super.modificar(sucursal, mapeador, formateador, Sucursal::getCodigo);
     }
-    
-    public void eliminar(Sucursal sucursal) {
-        super.eliminar(sucursal, mapeador, formateador, Sucursal::getCodigo);
-    }
 
 }
