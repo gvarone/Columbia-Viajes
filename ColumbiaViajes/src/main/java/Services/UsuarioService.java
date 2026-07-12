@@ -69,4 +69,8 @@ public class UsuarioService {
         usuarioDAO.registrar(duenio);
         return duenio;
     }
+    
+    public boolean hayUsuariosRegistrados() {
+        return !usuarioDAO.listar().isEmpty();
+    }
 }

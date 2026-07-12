@@ -15,7 +15,7 @@ public class LoginVista {
     }
 
     public String leerUsername() {
-        System.out.print("Username: ");
+        System.out.print("Username (escriba salir para... bueno, salir: ");
         return entrada.nextLine().trim();
     }
 
