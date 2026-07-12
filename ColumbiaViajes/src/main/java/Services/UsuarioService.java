@@ -1,11 +1,13 @@
 package Services;
 
 import DAOs.UsuarioDAO;
+import Enums.Rol;
 import Modelos.Usuario;
 import Modelos.Cliente;
 import Modelos.Vendedor;
 import Modelos.Administrador;
 import Modelos.Duenio;
+import java.util.List;
 
 public class UsuarioService {
 
@@ -24,6 +26,10 @@ public class UsuarioService {
             return null; 
         }
         return usuario; 
+    }
+    
+    public List<Usuario> listarUsuariosXRol(Rol rol){
+        return usuarioDAO.listarXRol(rol);
     }
     
     public Cliente registrarCliente(String nombre, String apellido, String username,

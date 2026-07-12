@@ -38,6 +38,15 @@ public class Vuelo {
         this.asientosTuristaDisponibles = asientosTurista;
         this.fechaHora = fechaHora;
     }
+    
+    @Override
+    public String toString() {
+        return "Código: " + codigo + " | Origen: " + origen 
+                + " | Destino: " + destino + " | Fecha Hora: " + fechaHora
+                + " | Asientos Totales: " + asientosTotales 
+                + " | Asientos Primera Disponibles: " + (asientosDisponibles - asientosTuristaDisponibles)
+                + " | Asientos Turista Disponibles: " + asientosTuristaDisponibles;
+    }
 
     public void eliminar() {
         this.eliminado = true;

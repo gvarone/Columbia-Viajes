@@ -2,6 +2,7 @@
 package Services;
 import DAOs.HotelDAO;
 import Modelos.Hotel;
+import java.util.List;
 
 public class HotelService {
     private HotelDAO hotelDAO;
@@ -19,5 +20,17 @@ public class HotelService {
         Hotel hotel = new Hotel(codigo, nombre, direccion, email, telefono, plazasTotales);
         hotelDAO.registrar(hotel);
         return hotel;
+    }
+     
+    public List<Hotel> listar() {
+        return hotelDAO.listar();
+    }
+    
+    public Hotel obtenerPorCodigo(int codigo) {
+        return hotelDAO.obtenerPorCodigo(codigo);
+    }
+    
+    public void modificar(Hotel hotel) {
+        hotelDAO.modificar(hotel);
     }
 }

@@ -82,4 +82,8 @@ public class HotelDAO extends DAO<Hotel> {
     public void registrar(Hotel hotel) {
         super.registrar(hotel, mapeador, formateador);
     }
+    
+    public void modificar(Hotel hotel) {
+        super.modificar(hotel, mapeador, formateador, Hotel::getCodigo);
+    }
 }

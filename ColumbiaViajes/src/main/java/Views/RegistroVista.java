@@ -12,6 +12,11 @@ public class RegistroVista {
 
     public void mostrarInicio() {
         System.out.println("--- Registro de usuario ---");
+        System.out.println("¿Qué tipo de usuario quiere crear?");
+        System.out.println("1- Cliente");
+        System.out.println("2- Vendedor");
+        System.out.println("3- Administrador");
+        System.out.println("4- Dueño");
     }
 
     public String leerNombre() {

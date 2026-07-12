@@ -52,6 +52,15 @@ public class Hotel{
         this.plazasTotales = plazasTotales;
     }
     
+    @Override
+    public String toString() {
+        return "Código: " + codigo + " | Nombre: " + nombre 
+                + " | Direccion: " + direccion + " | Ciudad: " + ciudad
+                + " | Telefono: " + telefono 
+                + " | Plazas Totales: " + plazasTotales
+                + " | Plazas Disponibles: " + plazasDisponibles;
+    }
+    
     public boolean isEliminado(){
         return eliminado;
     }

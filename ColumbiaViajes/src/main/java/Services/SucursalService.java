@@ -2,6 +2,7 @@
 package Services;
 import DAOs.SucursalDAO;
 import Modelos.Sucursal;
+import java.util.List;
 
 public class SucursalService {
     private SucursalDAO sucursalDAO;
@@ -20,5 +21,16 @@ public class SucursalService {
         sucursalDAO.registrar(sucursal);
         return sucursal;
     }
-     //public Sucursal(int codigo, String direccion, String email, String telefono) {
+    
+    public List<Sucursal> listar() {
+        return sucursalDAO.listar();
+    }
+    
+    public Sucursal obtenerPorCodigo(int codigo) {
+        return sucursalDAO.obtenerPorCodigo(codigo);
+    }
+    
+    public void modificar(Sucursal sucursal) {
+        sucursalDAO.modificar(sucursal);
+    }
 }

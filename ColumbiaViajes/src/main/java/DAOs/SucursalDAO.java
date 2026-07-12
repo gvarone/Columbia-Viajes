@@ -30,9 +30,9 @@ public class SucursalDAO extends DAO<Sucursal> {
     };
     
     Function<Sucursal, String> formateador = sucursal -> {
-        return sucursal.getCodigo() + ";" + sucursal.getDireccion() + ";" + 
-                sucursal.getEmail() + ";" + sucursal.getTelefono() + ";" +
-                sucursal.isEliminado();
+        return sucursal.getCodigo() + ";" + sucursal.getNombre() + ";" + 
+                sucursal.getDireccion() + ";" + sucursal.getEmail() + ";" + 
+                sucursal.getTelefono() + ";" + sucursal.isEliminado();
     };
     
     public int obtenerUltimoCodigo() {
@@ -80,4 +80,9 @@ public class SucursalDAO extends DAO<Sucursal> {
     public void registrar(Sucursal sucursal) {
         super.registrar(sucursal, mapeador, formateador);
     }
+    
+    public void modificar(Sucursal sucursal) {
+        super.modificar(sucursal, mapeador, formateador, Sucursal::getCodigo);
+    }
+
 }

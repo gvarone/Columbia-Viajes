@@ -47,7 +47,7 @@ public class Sucursal{
         return telefono;
     }
     
-    public void setNombre(){
+    public void setNombre(String nombre){
         this.nombre = nombre;
     }
 
@@ -63,6 +63,10 @@ public class Sucursal{
         this.telefono = telefono;
     }
     
-    
-    
+    @Override
+    public String toString() {
+        return "Código: " + codigo + " | Dirección: " + direccion 
+                + " | Email: " + email + " | Teléfono: " + telefono;
+    }
+
 }

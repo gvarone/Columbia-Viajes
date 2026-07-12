@@ -2,6 +2,7 @@
 package DAOs;
 
 import Enums.Rol;
+import static Enums.Rol.CLIENTE;
 import Modelos.Usuario;
 import Modelos.Cliente;
 import Modelos.Administrador;
@@ -57,12 +58,11 @@ public class UsuarioDAO extends DAO<Usuario> {
                 usuario.getApellido() + ";" + usuario.getRol() + ";" + 
                 usuario.getUsername() + ";" + usuario.getContrasenia() + ";" +
                 usuario.isEliminado();
-        
-        // Si es un Cliente, le pegamos el codTurista al final (índice 7)
+
         if (usuario instanceof Cliente) {
             linea += ";" + ((Cliente) usuario).getCodTurista();
         } else {
-            linea += ";0"; // O ";null", para que la línea mantenga el mismo tamaño
+            linea += ";0";
         }
         
         return linea;
@@ -83,9 +83,20 @@ public class UsuarioDAO extends DAO<Usuario> {
     public List<Usuario> listar() {
         List<Usuario> todas = leerTodos(mapeador);
         List<Usuario> resultado = new ArrayList<>();
-        for (Usuario s : todas) {
-            if (!s.isEliminado()) {
-                resultado.add(s);
+        for (Usuario u : todas) {
+            if (!u.isEliminado()) {
+                resultado.add(u);
+            }
+        }
+        return resultado;
+    }
+    
+    public List<Usuario> listarXRol(Rol rol) {
+        List<Usuario> todas = leerTodos(mapeador);
+        List<Usuario> resultado = new ArrayList<>();
+        for (Usuario u : todas) {
+            if (!u.isEliminado() && u.getRol() == rol) {
+                resultado.add(u);
             }
         }
         return resultado;

@@ -9,14 +9,24 @@ public class Turista{
     private String direccion;
     private String telefono;
     private String email;
+    private boolean eliminado = false;
     
-    public Turista(int codigo, String nombre,String apellido, String direccion, String telefono, String email){
+    public Turista(int codigo, String nombre,String apellido, String direccion, 
+            String telefono, String email){
         this.codigo = codigo;
         this.nombre = nombre;
         this.apellido = apellido;
         this.direccion = direccion;
         this.telefono = telefono;
         this.email = email;
+    }
+    
+    public boolean isEliminado(){
+        return eliminado;
+    }
+    
+    public void eliminar(){
+        this.eliminado = true;
     }
     
     public int getCodigo() {

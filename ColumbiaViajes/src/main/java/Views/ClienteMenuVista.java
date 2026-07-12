@@ -12,6 +12,7 @@ public class ClienteMenuVista extends MenuVistaBase {
     @Override
     public void mostrarMenu() {
         System.out.println("---Menu Clientes---");
+        System.out.println("0- Salir");
         System.out.println("1- Ver hoteles disponibles");
         System.out.println("2- Ver vuelos disponibles");
         System.out.println("3- Ver paquetes en propiedad");

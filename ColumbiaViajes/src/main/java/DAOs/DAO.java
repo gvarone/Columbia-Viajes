@@ -50,6 +50,7 @@ public abstract class DAO<T> {
         }
     }
     
+    
     protected void guardarUno(T entidad, Function<T, String> formateador){
         try{
             String linea = formateador.apply(entidad);
@@ -63,6 +64,18 @@ public abstract class DAO<T> {
     protected void registrar(T item, Function<String, T> mapeador, Function<T, String> formateador) {
         List<T> actuales = leerTodos(mapeador);
         actuales.add(item);
+        guardarTodos(actuales, formateador);
+    }
+    
+    protected void modificar(T item, Function<String, T> mapeador, 
+            Function<T, String> formateador, Function<T, Integer> obtenerCodigo) {
+        List<T> actuales = leerTodos(mapeador);
+        for (int i = 0; i < actuales.size(); i++) {
+            if (obtenerCodigo.apply(actuales.get(i)).equals(obtenerCodigo.apply(item))) {
+                actuales.set(i, item);
+                break;
+            }
+        }
         guardarTodos(actuales, formateador);
     }
 }

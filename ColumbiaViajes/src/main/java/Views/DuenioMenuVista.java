@@ -11,6 +11,7 @@ public class DuenioMenuVista extends MenuVistaBase {
     @Override
     public void mostrarMenu() {
         System.out.println("---Menu Dueños---");
+        System.out.println("0- Salir");
         System.out.println("1- Listar vendedores");
     }
     
