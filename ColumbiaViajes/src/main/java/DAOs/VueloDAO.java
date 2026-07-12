@@ -43,7 +43,7 @@ public class VueloDAO extends DAO<Vuelo> {
                 + vuelo.getFechaHora().format(FORMATO_FECHA) + ";"
                 + vuelo.getAsientosTotales() + ";" + vuelo.getAsientosTurista() + ";"
                 + vuelo.getAsientosDisponibles() + ";" + vuelo.getAsientosTuristaDisponibles() + ";"
-                + vuelo.isEliminado();
+                + vuelo.isEliminado() + ";";
     };
     
     public int obtenerUltimoCodigo() {

@@ -12,7 +12,7 @@ import java.util.function.Function;
 public abstract class DAO<T> {
 
     protected static final String CARPETA_DATOS = "data/";
-    private String ruta;
+    private final String ruta;
 
     public DAO(String ruta) {
         this.ruta = ruta;
@@ -40,8 +40,8 @@ public abstract class DAO<T> {
             }
             List<String> lineas = lista.stream()
                     .map(formateador)
-                    .collect(java.util.stream.Collectors.toList());
-
+                    .toList();
+            Files.write(Paths.get(ruta), lineas);
             Files.write(path, lineas,
                     StandardOpenOption.CREATE,
                     StandardOpenOption.TRUNCATE_EXISTING);

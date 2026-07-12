@@ -58,7 +58,7 @@ public class HotelDAO extends DAO<Hotel> {
         }
         return resultado;
     }
-    
+        
     public Hotel obtenerPorCodigo(int codigo) {
         List<Hotel> todas = leerTodos(mapeador);
         for (Hotel h : todas) {
