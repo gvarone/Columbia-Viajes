@@ -1,37 +1,45 @@
-
 package Modelos;
 
 import java.time.LocalDateTime;
 
+public class Vuelo {
 
-public class Vuelo{
     private final int codigo;
     private String origen;
     private String destino;
-    private final int plazasTotales;
-    private final int plazasTurista;
-    private int plazasTuristaDisponibles;
-    private int plazasPrimeraDisponibles;
-    private LocalDateTime fecha_hora;
+    private final int asientosTotales;
+    private final int asientosTurista;
+    private int asientosTuristaDisponibles;
+    private int asientosDisponibles;
+    private LocalDateTime fechaHora;
     private boolean eliminado = false;
 
-    public Vuelo(int codigo, String origen, String destino, int plazasTotales, 
-            int plazasTurista, LocalDateTime fecha_hora) {
+    public Vuelo(int codigo, String origen, String destino, LocalDateTime fechaHora,
+            int asientosTotales, int asientosTurista) {
         this.codigo = codigo;
         this.origen = origen;
         this.destino = destino;
-        this.plazasTotales = plazasTotales;
-        this.plazasTurista = plazasTurista;
-        this.plazasTuristaDisponibles = plazasTurista;
-        this.plazasPrimeraDisponibles = plazasTotales - plazasTurista;
-        this.fecha_hora = fecha_hora;
+        this.asientosTotales = asientosTotales;
+        this.asientosDisponibles = asientosTotales;
+        this.asientosTurista = asientosTurista;
+        this.asientosTuristaDisponibles = asientosTurista;
+        this.fechaHora = fechaHora;
     }
-    
-    public boolean isEliminado(){
-        return eliminado;
+
+    public Vuelo(int codigo, String origen, String destino, LocalDateTime fechaHora,
+            int asientosTotales, int asientosTurista, int asientosDisponibles,
+            int asientosTuristaDisponibles) {
+        this.codigo = codigo;
+        this.origen = origen;
+        this.destino = destino;
+        this.asientosTotales = asientosTotales;
+        this.asientosDisponibles = asientosTotales;
+        this.asientosTurista = asientosTurista;
+        this.asientosTuristaDisponibles = asientosTurista;
+        this.fechaHora = fechaHora;
     }
-    
-    public void eliminar(){
+
+    public void eliminar() {
         this.eliminado = true;
     }
 
@@ -46,17 +54,37 @@ public class Vuelo{
     public String getDestino() {
         return destino;
     }
-    
+
     public LocalDateTime getFechaHora() {
-        return fecha_hora;
+        return fechaHora;
     }
 
-    public int getPlazasTotales() {
-        return plazasTotales;
+    public int getAsientosTotales() {
+        return asientosTotales;
     }
 
-    public int getPlazasTurista() {
-        return plazasTurista;
+    public int getAsientosTurista() {
+        return asientosTurista;
+    }
+    
+    public int getAsientosDisponibles() {
+        return asientosDisponibles;
+    }
+
+    public int getAsientosPrimera() {
+        return asientosTotales - asientosTurista;
+    }
+
+    public int getAsientosTuristaDisponibles() {
+        return asientosTuristaDisponibles;
+    }
+
+    public int getAsientosPrimeraDisponibles() {
+        return asientosTuristaDisponibles - asientosDisponibles;
+    }
+
+    public boolean isEliminado() {
+        return eliminado;
     }
 
     public void setOrigen(String origen) {
@@ -66,14 +94,17 @@ public class Vuelo{
     public void setDestino(String destino) {
         this.destino = destino;
     }
+
+    public void setFechaHora(LocalDateTime fechaHora) {
+        this.fechaHora = fechaHora;
+    }
     
-    public void setFechaHora(LocalDateTime fecha_hora) {
-        this.fecha_hora = fecha_hora;
+    public void setAsientosDisponibles(int asientosDisponibles) {
+        this.asientosDisponibles = asientosDisponibles;
+    }
+    
+    public void setAsientosTuristaDisponibles(int asientosTuristaDisponibles) {
+        this.asientosTuristaDisponibles = asientosTuristaDisponibles;
     }
 
-    public int getPlazasTuristaDisponibles() {
-        return plazasTuristaDisponibles;
-    }
-    
-    
 }

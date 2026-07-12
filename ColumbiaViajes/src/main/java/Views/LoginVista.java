@@ -3,7 +3,9 @@ package Views;
 
 import java.util.Scanner;
 
-public class LoginVista {    
+public class LoginVista {  
+    protected Scanner entrada;
+    
     public LoginVista(){
         this.entrada = new Scanner(System.in);
     }

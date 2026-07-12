@@ -16,21 +16,6 @@ public class VendedorMenuVista extends MenuVistaBase {
         System.out.println("3- Asignar un paquete a un cliente");
     }
 
-    @Override
-    public int leerOpcion() {
-        int opt = 0;
-        boolean esValido = false;
-        
-        do{
-            try {
-                opt = Integer.parseInt(entrada.nextLine().trim());
-                esValido = true;
-            } catch (NumberFormatException e) {
-                System.out.println("Entrada inválida. Debe ingresar un número entero.");
-            }
-        } while(!esValido);
-        
-        return opt;
-    }
+    
     
 }

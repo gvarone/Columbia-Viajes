@@ -69,6 +69,16 @@ public class HotelDAO extends DAO<Hotel> {
         return null;
     }
     
+    public Hotel obtenerPorNombre(String nombre){
+        List<Hotel> todas = leerTodos(mapeador);
+        for (Hotel h: todas){
+            if(!h.isEliminado() && h.getNombre().equals(nombre)){
+                return h;
+            }
+        }
+        return null;
+    }
+    
     public void registrar(Hotel hotel) {
         super.registrar(hotel, mapeador, formateador);
     }

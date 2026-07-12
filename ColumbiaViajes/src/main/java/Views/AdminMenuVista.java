@@ -13,7 +13,7 @@ public class AdminMenuVista extends MenuVistaBase {
         System.out.println("---Menu Administradores---");
         System.out.println("1- Agregar una Sucursal");
         System.out.println("2- Agregar un Hotel");
-        System.out.println("3- Agregar un vuelo");
+        System.out.println("3- Agregar un Vuelo");
         System.out.println("4- Listar sucursales");
         System.out.println("5- Listar hoteles");
         System.out.println("6- Listar vuelos");

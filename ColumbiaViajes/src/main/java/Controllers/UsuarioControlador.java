@@ -11,7 +11,9 @@ import Views.AdminMenuVista;
 import Views.DuenioMenuVista;
 import Services.UsuarioService;
 import Services.SucursalService;
-import java.util.Scanner;
+import Services.HotelService;
+import Services.VueloService;
+import java.time.LocalDateTime;
 
 
 public class UsuarioControlador {
@@ -20,10 +22,14 @@ public class UsuarioControlador {
     private LoginVista loginVista;
     private UsuarioService usuarioService;
     private SucursalService sucursalService;
+    private HotelService hotelService;
+    private VueloService vueloService;
     
     public UsuarioControlador() {
         this.usuarioService = new UsuarioService();
         this.sucursalService = new SucursalService();
+        this.hotelService = new HotelService();
+        this.vueloService = new VueloService();
         this.loginVista = new LoginVista();
     }
     
@@ -102,6 +108,11 @@ public class UsuarioControlador {
                 case 1:
                     agregarSucursal();
                     break;
+                case 2:
+                    agregarHotel();
+                    break;
+                case 3:
+                    agregarVuelo();
                 case 0:
                     salir = true;
                     break;
@@ -112,12 +123,35 @@ public class UsuarioControlador {
     }
     
     private void agregarSucursal() {
-        String nombre = menuVista.leerDato("Nombre de Sucursal");
-        String direccion = menuVista.leerDato("Dirección");
-        String email = menuVista.leerDato("Email");
-        String telefono = menuVista.leerDato("Teléfono");
+        String nombre = menuVista.leerString("Nombre de Sucursal");
+        String direccion = menuVista.leerString("Dirección");
+        String email = menuVista.leerString("Email");
+        String telefono = menuVista.leerString("Teléfono");
 
         sucursalService.registrar(nombre, direccion, email, telefono);
         System.out.println("Sucursal registrada con éxito.");
+    }
+    
+    private void agregarHotel() {
+        String nombre = menuVista.leerString("Nombre del Hotel");
+        String direccion = menuVista.leerString("Dirección");
+        String email = menuVista.leerString("Email");
+        String telefono = menuVista.leerString("Teléfono");
+        int plazasTotales = menuVista.leerEntero("Plazas Totales",true);
+
+        hotelService.registrar(nombre, direccion, email, telefono, plazasTotales);
+        System.out.println("Hotel registrado con éxito.");
+    }
+    
+    private void agregarVuelo() {
+        String origen = menuVista.leerString("Origen");
+        String destino = menuVista.leerString("Destino");
+        LocalDateTime fechaHora = menuVista.leerDatoFecha("Fecha-Hora");
+        int asientosTotales = menuVista.leerEntero("Asientos Totales",true);
+        int asientosTurista = menuVista.leerEntero("Plazas Totales",true);
+
+        vueloService.registrar(origen, destino, fechaHora, asientosTotales, 
+                asientosTurista);
+        System.out.println("Vuelo registrado con éxito.");
     }
 }

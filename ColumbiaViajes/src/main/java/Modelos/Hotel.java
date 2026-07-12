@@ -12,20 +12,20 @@ public class Hotel{
     private int plazasDisponibles;
     private final int plazasTotales;
 
-    public Hotel(int codigo, String nombre, int plazas_totales) {
+    public Hotel(int codigo, String nombre, int plazasTotales) {
         this.codigo = codigo;
         this.nombre = nombre;
-        this.plazasTotales = plazas_totales;
+        this.plazasTotales = plazasTotales;
+        this.plazasDisponibles = plazasTotales;
     }
 
-    public Hotel(int codigo, String nombre, String direccion, String ciudad, String telefono,
-            int plazasDisponibles, int plazasTotales) {
+    public Hotel(int codigo, String nombre, String direccion, String ciudad, String telefono, int plazasTotales) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.direccion = direccion;
         this.ciudad = ciudad;
         this.telefono = telefono;
-        this.plazasDisponibles = plazasDisponibles;
+        this.plazasDisponibles = plazasTotales;
         this.plazasTotales = plazasTotales;
     }    
     
@@ -37,6 +37,17 @@ public class Hotel{
         this.ciudad = ciudad;
         this.telefono = telefono;
         this.eliminado = eliminado;
+        this.plazasDisponibles = plazasDisponibles;
+        this.plazasTotales = plazasTotales;
+    }
+    
+    public Hotel(int codigo, String nombre, String direccion, String ciudad, String telefono,
+            int plazasDisponibles, int plazasTotales) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.ciudad = ciudad;
+        this.telefono = telefono;
         this.plazasDisponibles = plazasDisponibles;
         this.plazasTotales = plazasTotales;
     }

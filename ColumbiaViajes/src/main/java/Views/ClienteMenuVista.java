@@ -17,20 +17,5 @@ public class ClienteMenuVista extends MenuVistaBase {
         System.out.println("3- Ver paquetes en propiedad");
     }
     
-    @Override
-    public int leerOpcion(){
-        int opt = 0;
-        boolean esValido = false;
-        
-        do{
-            try {
-                opt = Integer.parseInt(entrada.nextLine().trim());
-                esValido = true;
-            } catch (NumberFormatException e) {
-                System.out.println("Entrada inválida. Debe ingresar un número entero.");
-            }
-        } while(!esValido);
-        
-        return opt;
-    }
+   
 }
