@@ -19,15 +19,16 @@ public class AdminMenuVista extends MenuVistaBase {
         System.out.println("5- Listar sucursales");
         System.out.println("6- Listar hoteles");
         System.out.println("7- Listar vuelos");
-        System.out.println("8- Listar clientes/turistas");
-        System.out.println("9- Modificar sucursales");
-        System.out.println("10- Modificar hoteles");
-        System.out.println("11- Modificar vuelos");
-        System.out.println("12- Modificar clientes/turistas");
-        System.out.println("13- Eliminar sucursales");
-        System.out.println("14- Eliminar hoteles");
-        System.out.println("15- Eliminar vuelos");
-        System.out.println("16- Eliminar clientes/turistas");
-        System.out.println("17- Asignar un rol a un usuario");
+        System.out.println("8- Listar clientes");
+        System.out.println("9- Listar turistas");
+        System.out.println("10- Modificar sucursales");
+        System.out.println("11- Modificar hoteles");
+        System.out.println("12- Modificar vuelos");
+        System.out.println("13- Modificar clientes/turistas");
+        System.out.println("14- Eliminar sucursales");
+        System.out.println("15- Eliminar hoteles");
+        System.out.println("16- Eliminar vuelos");
+        System.out.println("17- Eliminar clientes/turistas");
+        System.out.println("18- Asignar un rol a un usuario");
     } 
 }

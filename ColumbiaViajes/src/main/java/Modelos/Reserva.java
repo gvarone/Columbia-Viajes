@@ -5,7 +5,7 @@ import Enums.Hospedaje;
 import Enums.Clase;
 import java.time.LocalDate;
 
-public class Paquete{
+public class Reserva{
     private final int codigo;
     private int codTurista;
     private int codVendedor;
@@ -17,7 +17,7 @@ public class Paquete{
     private LocalDate checkIn;
     private LocalDate checkOut;
 
-    public Paquete(int codTurista, int codVendedor, int codSucursal, int codigo) {
+    public Reserva(int codTurista, int codVendedor, int codSucursal, int codigo) {
         this.codigo = codigo;
         this.codTurista = codTurista;
         this.codVendedor = codVendedor;

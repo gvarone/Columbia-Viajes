@@ -26,4 +26,8 @@ public class TuristaService {
     public List<Turista> listar() {
         return turistaDAO.listar();
     }
+    
+    public Turista obtenerPorCodigo(int codigo) {
+        return turistaDAO.obtenerPorCodigo(codigo);
+    }
 }

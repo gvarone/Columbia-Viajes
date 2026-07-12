@@ -35,7 +35,7 @@ public class UsuarioService {
     public Cliente registrarCliente(String nombre, String apellido, String username,
             String contrasenia, int codTurista) {
         if (usuarioDAO.obtenerPorUsername(username) != null) {
-            throw new RuntimeException("Ya existe un usuario con ese nombre de usuario");
+            throw new RuntimeException("Ya existe un usuario con ese username");
         }
         int codigo = usuarioDAO.obtenerUltimoCodigo();
         Cliente cliente = new Cliente(codigo, nombre, apellido, contrasenia, codTurista, username);

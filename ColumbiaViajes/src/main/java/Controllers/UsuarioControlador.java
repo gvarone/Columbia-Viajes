@@ -1,4 +1,3 @@
-
 package Controllers;
 
 import Modelos.Usuario;
@@ -11,31 +10,31 @@ import Views.AdminMenuVista;
 import Views.DuenioMenuVista;
 import Services.UsuarioService;
 
-
 public class UsuarioControlador {
+
     private Usuario usuario;
     private MenuVista menuVista;
     private LoginVista loginVista;
     private UsuarioService usuarioService;
-    
+
     public UsuarioControlador() {
         this.usuarioService = new UsuarioService();
         this.loginVista = new LoginVista();
     }
-    
+
     public void iniciar() {
         if (!usuarioService.hayUsuariosRegistrados()) {
             crearPrimerAdministrador();
         }
-        
+
         usuario = null;
         int intentos = 0;
         final int MAX_INTENTOS = 3;
-        
-        while (usuario == null && intentos < MAX_INTENTOS){
+
+        while (usuario == null && intentos < MAX_INTENTOS) {
             loginVista.mostrarInicio();
             String username = loginVista.leerUsername();
-            if (username.equalsIgnoreCase("salir")){
+            if (username.equalsIgnoreCase("salir")) {
                 return;
             }
             String contrasenia = loginVista.leerContrasenia();
@@ -43,7 +42,7 @@ public class UsuarioControlador {
 
             if (usuario == null) {
                 intentos++;
-                System.out.println("Usuario o contraseña incorrectos. Intento " 
+                System.out.println("Usuario o contraseña incorrectos. Intento "
                         + intentos + " de " + MAX_INTENTOS + ".");
             }
         }
@@ -53,9 +52,9 @@ public class UsuarioControlador {
         }
         System.out.println("Bienvenido, " + usuario.getNombre());
         mostrarMenuSegunRol();
-        
+
     }
-    
+
     private void crearPrimerAdministrador() {
         System.out.println("No hay usuarios en el sistema. Vamos a crear el primer Administrador.");
         RegistroVista registroVista = new RegistroVista();
@@ -67,7 +66,7 @@ public class UsuarioControlador {
         usuarioService.registrarAdministrador(nombre, apellido, username, contrasenia);
         System.out.println("Administrador creado. Ya podés iniciar sesión.");
     }
-    
+
     private void mostrarMenuSegunRol() {
         switch (usuario.getRol()) {
             case CLIENTE:
@@ -75,6 +74,8 @@ public class UsuarioControlador {
                 break;
             case VENDEDOR:
                 menuVista = new VendedorMenuVista();
+                VendedorControlador vendedorControlador = new VendedorControlador(usuario, menuVista);
+                vendedorControlador.manejarMenu();
                 break;
             case ADMIN:
                 menuVista = new AdminMenuVista();
@@ -86,7 +87,5 @@ public class UsuarioControlador {
                 break;
         }
     }
-    
-    
-    
+
 }

@@ -64,21 +64,24 @@ public class AdminControlador {
                     listarVuelos();
                     break;
                 case 8:
-                    listarClientesyTuristas();
+                    listarClientes();
                     break;
                 case 9:
-                    modificarSucursal();
+                    listarTuristas();
                     break;
                 case 10:
+                    modificarSucursal();
+                    break;
+                case 11:
                     modificarHotel();
                     break;
-                case 13:
+                case 14:
                     eliminarSucursal();
                     break;
-                case 14:
+                case 15:
                     eliminarHotel();
                     break;
-                case 15:
+                case 16:
                     eliminarVuelo();
                     break;
                 case 0:
@@ -122,7 +125,7 @@ public class AdminControlador {
         System.out.println("Sucursal modificada con éxito.");
     }
     
-    public void listarSucursales() {
+    private void listarSucursales() {
         List<Sucursal> sucursales = sucursalService.listar();
         if (sucursales.isEmpty()) {
             System.out.println("No hay sucursales registradas.");
@@ -133,7 +136,7 @@ public class AdminControlador {
         }
     }
     
-    public void eliminarSucursal() {
+    private void eliminarSucursal() {
         int codigo = menuVista.leerEntero("Ingrese el Codigo: ", true);
         Sucursal sucursal = sucursalService.obtenerPorCodigo(codigo);
         if (sucursal == null) {
@@ -178,7 +181,7 @@ public class AdminControlador {
         System.out.println("Hotel modificada con éxito.");
     }
     
-    public void listarHoteles() {
+    private void listarHoteles() {
         List<Hotel> hoteles = hotelService.listar();
         if (hoteles.isEmpty()) {
             System.out.println("No hay hoteles registrados.");
@@ -189,7 +192,7 @@ public class AdminControlador {
         }
     }
     
-    public void eliminarHotel() {
+    private void eliminarHotel() {
         int codigo = menuVista.leerEntero("Ingrese el Codigo: ", true);
         Hotel hotel = hotelService.obtenerPorCodigo(codigo);
         if (hotel == null) {
@@ -213,7 +216,7 @@ public class AdminControlador {
         System.out.println("Vuelo registrado con éxito.");
     }
     
-    public void listarVuelos() {
+    private void listarVuelos() {
         List<Vuelo> vuelos = vueloService.listar();
         if (vuelos.isEmpty()) {
             System.out.println("No hay hoteles registrados.");
@@ -224,7 +227,7 @@ public class AdminControlador {
         }
     }
     
-    public void eliminarVuelo() {
+    private void eliminarVuelo() {
         int codigo = menuVista.leerEntero("Ingrese el Codigo: ", true);
         Vuelo vuelo = vueloService.obtenerPorCodigo(codigo);
         if (vuelo == null) {
@@ -262,20 +265,26 @@ public class AdminControlador {
                 System.out.println("Opción de tipo de usuario inválida.");
                 return;
         }
-        usuarioService.registrarAdministrador(nombre, apellido, username, contrasenia);
         System.out.println("Usuario creado. Ya podés iniciar sesión.");
     }
-    
-    public void listarClientesyTuristas() {
+
+    private void listarClientes() {
         List<Usuario> clientes = usuarioService.listarUsuariosXRol(Rol.CLIENTE);
-        List<Turista> turistas = turistaService.listar();
-        if (clientes.isEmpty() && turistas.isEmpty()) {
-            System.out.println("No hay clientes ni turistas registrados.");
+        if (clientes.isEmpty()) {
+            System.out.println("No hay clientes registrados.");
             return;
         }
         System.out.println("Clientes: ");
         for (Usuario c : clientes) {
             System.out.println(c);
+        }
+    }
+
+    private void listarTuristas() {
+        List<Turista> turistas = turistaService.listar();
+        if (turistas.isEmpty()) {
+            System.out.println("No hay clientes ni turistas registrados.");
+            return;
         }
         System.out.println("Turistas: ");
         for (Turista t : turistas) {
