@@ -24,4 +24,17 @@ public class VueloService {
     public List<Vuelo> listar() {
         return vueloDAO.listar();
     }
+    
+    public Vuelo obtenerPorCodigo(int codigo) {
+        return vueloDAO.obtenerPorCodigo(codigo);
+    }
+    
+    public void modificar(Vuelo vuelo) {
+        vueloDAO.modificar(vuelo);
+    }
+    
+    public void eliminar(Vuelo vuelo) {
+        vuelo.eliminar();
+        vueloDAO.modificar(vuelo);
+    }
 }

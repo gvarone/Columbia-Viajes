@@ -33,4 +33,9 @@ public class HotelService {
     public void modificar(Hotel hotel) {
         hotelDAO.modificar(hotel);
     }
+    
+    public void eliminar(Hotel hotel) {
+        hotel.eliminar();
+        hotelDAO.modificar(hotel);
+    }
 }

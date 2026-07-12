@@ -143,6 +143,15 @@ public class UsuarioControlador {
                 case 10:
                     modificarHotel();
                     break;
+                case 13:
+                    eliminarSucursal();
+                    break;
+                case 14:
+                    eliminarHotel();
+                    break;
+                case 15:
+                    eliminarVuelo();
+                    break;
                 case 0:
                     salir = true;
                     break;
@@ -195,6 +204,18 @@ public class UsuarioControlador {
         }
     }
     
+    public void eliminarSucursal() {
+        int codigo = menuVista.leerEntero("Ingrese el Codigo: ", true);
+        Sucursal sucursal = sucursalService.obtenerPorCodigo(codigo);
+        if (sucursal == null) {
+            System.out.println("No se encontró ninguna sucursal con ese criterio.");
+            return;
+        }
+        System.out.println("Sucursal encontrada: " + sucursal);
+        sucursalService.eliminar(sucursal);
+        System.out.println("Sucursal eliminada con éxito.");
+    }
+    
     private void agregarHotel() {
         String nombre = menuVista.leerString("Nombre del Hotel");
         String direccion = menuVista.leerString("Dirección");
@@ -228,6 +249,29 @@ public class UsuarioControlador {
         System.out.println("Hotel modificada con éxito.");
     }
     
+    public void listarHoteles() {
+        List<Hotel> hoteles = hotelService.listar();
+        if (hoteles.isEmpty()) {
+            System.out.println("No hay hoteles registrados.");
+            return;
+        }
+        for (Hotel h : hoteles) {
+            System.out.println(h);
+        }
+    }
+    
+    public void eliminarHotel() {
+        int codigo = menuVista.leerEntero("Ingrese el Codigo: ", true);
+        Hotel hotel = hotelService.obtenerPorCodigo(codigo);
+        if (hotel == null) {
+            System.out.println("No se encontró ningun hotel con ese criterio.");
+            return;
+        }
+        System.out.println("Hotel encontrado: " + hotel);
+        hotelService.eliminar(hotel);
+        System.out.println("Hotel eliminado con éxito.");
+    }
+    
     private void agregarVuelo() {
         String origen = menuVista.leerString("Origen");
         String destino = menuVista.leerString("Destino");
@@ -238,6 +282,29 @@ public class UsuarioControlador {
         vueloService.registrar(origen, destino, fechaHora, asientosTotales, 
                 asientosTurista);
         System.out.println("Vuelo registrado con éxito.");
+    }
+    
+    public void listarVuelos() {
+        List<Vuelo> vuelos = vueloService.listar();
+        if (vuelos.isEmpty()) {
+            System.out.println("No hay hoteles registrados.");
+            return;
+        }
+        for (Vuelo v : vuelos) {
+            System.out.println(v);
+        }
+    }
+    
+    public void eliminarVuelo() {
+        int codigo = menuVista.leerEntero("Ingrese el Codigo: ", true);
+        Vuelo vuelo = vueloService.obtenerPorCodigo(codigo);
+        if (vuelo == null) {
+            System.out.println("No se encontró ningun hotel con ese criterio.");
+            return;
+        }
+        System.out.println("Vuelo encontrado: " + vuelo);
+        vueloService.eliminar(vuelo);
+        System.out.println("Vuelo eliminado con éxito.");
     }
     
     private void agregarUsuario() {
@@ -268,28 +335,6 @@ public class UsuarioControlador {
         }
         usuarioService.registrarAdministrador(nombre, apellido, username, contrasenia);
         System.out.println("Usuario creado. Ya podés iniciar sesión.");
-    }
-    
-    public void listarHoteles() {
-        List<Hotel> hoteles = hotelService.listar();
-        if (hoteles.isEmpty()) {
-            System.out.println("No hay hoteles registrados.");
-            return;
-        }
-        for (Hotel h : hoteles) {
-            System.out.println(h);
-        }
-    }
-    
-    public void listarVuelos() {
-        List<Vuelo> vuelos = vueloService.listar();
-        if (vuelos.isEmpty()) {
-            System.out.println("No hay hoteles registrados.");
-            return;
-        }
-        for (Vuelo v : vuelos) {
-            System.out.println(v);
-        }
     }
     
     public void listarClientesyTuristas() {

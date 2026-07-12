@@ -33,4 +33,9 @@ public class SucursalService {
     public void modificar(Sucursal sucursal) {
         sucursalDAO.modificar(sucursal);
     }
+    
+    public void eliminar(Sucursal sucursal) {
+        sucursal.eliminar();
+        sucursalDAO.modificar(sucursal);
+    }
 }

@@ -70,9 +70,9 @@ public class VueloDAO extends DAO<Vuelo> {
     
     public Vuelo obtenerPorCodigo(int codigo) {
         List<Vuelo> todas = leerTodos(mapeador);
-        for (Vuelo h : todas) {
-            if (h.getCodigo() == codigo) {
-                return h;
+        for (Vuelo v : todas) {
+            if (v.getCodigo() == codigo) {
+                return v;
             }
         }
         return null;
@@ -80,5 +80,9 @@ public class VueloDAO extends DAO<Vuelo> {
     
     public void registrar(Vuelo vuelo) {
         super.registrar(vuelo, mapeador, formateador);
+    }
+    
+    public void modificar(Vuelo vuelo) {
+        super.modificar(vuelo, mapeador, formateador, Vuelo::getCodigo);
     }
 }
