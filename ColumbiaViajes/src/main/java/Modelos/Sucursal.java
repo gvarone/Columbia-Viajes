@@ -32,7 +32,7 @@ public class Sucursal{
     }
     
     public String getNombre() {
-        return direccion;
+        return nombre;
     }
 
     public String getDireccion() {
@@ -65,8 +65,9 @@ public class Sucursal{
     
     @Override
     public String toString() {
-        return "Código: " + codigo + " | Dirección: " + direccion 
-                + " | Email: " + email + " | Teléfono: " + telefono;
+        return "Código: " + codigo + " | Nombre: " + nombre + 
+                " | Dirección: " + direccion  + " | Email: " + email +
+                " | Teléfono: " + telefono;
     }
 
 }

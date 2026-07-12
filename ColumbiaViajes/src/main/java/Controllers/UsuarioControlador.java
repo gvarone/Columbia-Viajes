@@ -184,6 +184,17 @@ public class UsuarioControlador {
         System.out.println("Sucursal modificada con éxito.");
     }
     
+    public void listarSucursales() {
+        List<Sucursal> sucursales = sucursalService.listar();
+        if (sucursales.isEmpty()) {
+            System.out.println("No hay sucursales registradas.");
+            return;
+        }
+        for (Sucursal s : sucursales) {
+            System.out.println(s);
+        }
+    }
+    
     private void agregarHotel() {
         String nombre = menuVista.leerString("Nombre del Hotel");
         String direccion = menuVista.leerString("Dirección");
@@ -257,17 +268,6 @@ public class UsuarioControlador {
         }
         usuarioService.registrarAdministrador(nombre, apellido, username, contrasenia);
         System.out.println("Usuario creado. Ya podés iniciar sesión.");
-    }
-    
-    public void listarSucursales() {
-        List<Sucursal> sucursales = sucursalService.listar();
-        if (sucursales.isEmpty()) {
-            System.out.println("No hay sucursales registradas.");
-            return;
-        }
-        for (Sucursal s : sucursales) {
-            System.out.println(s);
-        }
     }
     
     public void listarHoteles() {
