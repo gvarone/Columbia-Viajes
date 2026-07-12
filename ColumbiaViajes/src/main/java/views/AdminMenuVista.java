@@ -3,7 +3,7 @@ package Views;
 
 import java.util.Scanner;
 
-public class AdminMenuVista implements MenuVista {
+public class AdminMenuVista extends MenuVistaBase {
     private Scanner entrada;
     
     public AdminMenuVista() {
@@ -29,23 +29,5 @@ public class AdminMenuVista implements MenuVista {
         System.out.println("14- Eliminar vuelos");
         System.out.println("15- Eliminar clientes/turistas");
         System.out.println("16- Asignar un rol a un usuario");
-    }
-
-    @Override
-    public int leerOpcion() {
-        int opt = 0;
-        boolean esValido = false;
-        
-        do{
-            try {
-                opt = Integer.parseInt(entrada.nextLine().trim());
-                esValido = true;
-            } catch (NumberFormatException e) {
-                System.out.println("Entrada inválida. Debe ingresar un número entero.");
-            }
-        } while(!esValido);
-        
-        return opt;
-    }
-    
+    } 
 }

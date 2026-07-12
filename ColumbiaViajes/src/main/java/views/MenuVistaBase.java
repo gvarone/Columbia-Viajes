@@ -3,19 +3,13 @@ package Views;
 
 import java.util.Scanner;
 
-public class DuenioMenuVista extends MenuVistaBase {
-    private Scanner entrada;
+public abstract class MenuVistaBase implements MenuVista {
+    protected Scanner entrada;
     
-    public DuenioMenuVista() {
+    public MenuVistaBase() {
         this.entrada = new Scanner(System.in);
     }
     
-    @Override
-    public void mostrarMenu() {
-        System.out.println("---Menu Dueños---");
-        System.out.println("1- Listar vendedores");
-    }
-
     @Override
     public int leerOpcion() {
         int opt = 0;
@@ -33,4 +27,9 @@ public class DuenioMenuVista extends MenuVistaBase {
         return opt;
     }
     
+    @Override
+    public String leerDato(String campo) {
+        System.out.print(campo + ": ");
+        return entrada.nextLine().trim();
+    }
 }

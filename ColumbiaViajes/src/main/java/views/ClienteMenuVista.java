@@ -3,7 +3,7 @@ package Views;
 
 import java.util.Scanner;
 
-public class ClienteMenuVista implements MenuVista {
+public class ClienteMenuVista extends MenuVistaBase {
     private Scanner entrada;
     
     public ClienteMenuVista() {

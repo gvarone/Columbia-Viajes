@@ -16,12 +16,13 @@ public class SucursalDAO extends DAO<Sucursal> {
         String[] datos = linea.split(";");
         
         int codigo = Integer.parseInt(datos[0].trim());
-        String direccion = datos[1].trim();
-        String email = datos[2].trim();
-        String telefono = datos[3].trim();
-        boolean eliminado = Boolean.parseBoolean(datos[4].trim());
+        String nombre = datos[1].trim();
+        String direccion = datos[2].trim();
+        String email = datos[3].trim();
+        String telefono = datos[4].trim();
+        boolean eliminado = Boolean.parseBoolean(datos[5].trim());
         
-        Sucursal sucursal = new Sucursal(codigo, direccion, email, telefono);
+        Sucursal sucursal = new Sucursal(codigo, nombre, direccion, email, telefono);
         if (eliminado) {
             sucursal.eliminar();
         }
@@ -60,6 +61,16 @@ public class SucursalDAO extends DAO<Sucursal> {
         List<Sucursal> todas = leerTodos(mapeador);
         for (Sucursal s : todas) {
             if (s.getCodigo() == codigo) {
+                return s;
+            }
+        }
+        return null;
+    }
+    
+    public Sucursal obtenerPorNombre(String nombre){
+        List<Sucursal> todas = leerTodos(mapeador);
+        for (Sucursal s: todas){
+            if(!s.isEliminado() && s.getNombre().equals(nombre)){
                 return s;
             }
         }

@@ -10,15 +10,20 @@ import Views.VendedorMenuVista;
 import Views.AdminMenuVista;
 import Views.DuenioMenuVista;
 import Services.UsuarioService;
+import Services.SucursalService;
+import java.util.Scanner;
+
 
 public class UsuarioControlador {
     private Usuario usuario;
     private MenuVista menuVista;
     private LoginVista loginVista;
     private UsuarioService usuarioService;
+    private SucursalService sucursalService;
     
     public UsuarioControlador() {
         this.usuarioService = new UsuarioService();
+        this.sucursalService = new SucursalService();
         this.loginVista = new LoginVista();
     }
     
@@ -53,7 +58,9 @@ public class UsuarioControlador {
         }
         System.out.println("Bienvenido, " + usuario.getNombre());
         asignarMenuSegunRol();
-        menuVista.mostrarMenu();
+        if (usuario.getRol() == Enums.Rol.ADMIN) {
+            manejarMenuAdmin();
+        }
     }
     
     private void crearPrimerAdministrador() {
@@ -84,5 +91,33 @@ public class UsuarioControlador {
                 menuVista = new DuenioMenuVista();
                 break;
         }
+    }
+    
+    private void manejarMenuAdmin() {
+        boolean salir = false;
+        while (!salir) {
+            menuVista.mostrarMenu();
+            int opcion = menuVista.leerOpcion();
+            switch (opcion) {
+                case 1:
+                    agregarSucursal();
+                    break;
+                case 0:
+                    salir = true;
+                    break;
+                default:
+                    System.out.println("Opción no implementada todavía.");
+            }
+        }
+    }
+    
+    private void agregarSucursal() {
+        String nombre = menuVista.leerDato("Nombre de Sucursal");
+        String direccion = menuVista.leerDato("Dirección");
+        String email = menuVista.leerDato("Email");
+        String telefono = menuVista.leerDato("Teléfono");
+
+        sucursalService.registrar(nombre, direccion, email, telefono);
+        System.out.println("Sucursal registrada con éxito.");
     }
 }
