@@ -1,6 +1,7 @@
 package DAOs;
 
 import Modelos.Hotel;
+import Modelos.Sucursal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
@@ -50,6 +51,18 @@ public class HotelDAO extends DAO<Hotel> {
         }
         return resultado;
     }
+    
+    public void escribirLista(List<Hotel> lista){
+        guardarTodos(lista, formateador);
+    }
+    
+    public void escribir(Hotel hotel){
+        guardarUno(hotel, formateador);
+    }
+    
+    public void modificarUno(Hotel hotelNew){
+        modificar(hotelNew, mapeador, formateador, hotel -> hotel.getCodigo() == hotelNew.getCodigo());
+    }    
     
     public Hotel obtenerPorCodigo(int codigo) {
         List<Hotel> todas = leerTodos(mapeador);

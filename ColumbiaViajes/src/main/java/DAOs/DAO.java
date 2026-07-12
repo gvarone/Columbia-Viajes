@@ -5,8 +5,10 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 public abstract class DAO<T> {
 
@@ -38,7 +40,7 @@ public abstract class DAO<T> {
                     .map(formateador)
                     .toList();
             
-            Files.write(Paths.get(ruta), lineas, StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+            Files.write(Paths.get(ruta), lineas);
 
         } catch (IOException e) {
             throw new RuntimeException("Error al guardar los datos en " + ruta, e);
@@ -52,6 +54,27 @@ public abstract class DAO<T> {
             Files.write(Paths.get(ruta), List.of(linea), StandardOpenOption.CREATE, StandardOpenOption.APPEND);
         } catch (IOException e){
             throw new RuntimeException("Error al guardar los datos en " + ruta, e);
+        }
+    }
+    
+    protected void modificar(T entidadNew, Function<String, T> mapeador, Function<T, String> formateador, Predicate<T> condicionBusqueda){
+        List<T> lista = leerTodos(mapeador);
+        boolean encontrado = false;
+        int i = 0;
+        
+        while(i < lista.size() && !encontrado){
+            T entidadActual = lista.get(i);
+            
+            if (condicionBusqueda.test(entidadActual)){
+                lista.set(i, entidadNew);
+                encontrado = true;
+            }
+            
+            i++;
+        }
+        
+        if(encontrado){
+            guardarTodos(lista, formateador);
         }
     }
 

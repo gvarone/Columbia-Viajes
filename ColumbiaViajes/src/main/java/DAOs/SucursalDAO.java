@@ -35,6 +35,7 @@ public class SucursalDAO extends DAO<Sucursal> {
                 maximo = s.getCodigo();
             }
         }
+        
         return maximo + 1;
     }
     
@@ -49,9 +50,20 @@ public class SucursalDAO extends DAO<Sucursal> {
         return resultado;
     }
     
+    public void escribirLista(List<Sucursal> lista){
+        guardarTodos(lista, formateador);
+    }
+    
+    public void escribir(Sucursal sucursal){
+        guardarUno(sucursal, formateador);
+    }
+    
+    public void modificarUno(Sucursal sucursalNew){
+        modificar(sucursalNew, mapeador, formateador, suc -> suc.getCodigo() == sucursalNew.getCodigo());
+    }
+    
     public Sucursal obtenerPorCodigo(int codigo) {
         List<Sucursal> todas = leerTodos(mapeador);
-        List<Sucursal> resultado = new ArrayList<>();
         for (Sucursal s : todas) {
             if (s.getCodigo() == codigo) {
                 return s;
