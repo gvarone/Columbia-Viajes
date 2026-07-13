@@ -37,4 +37,14 @@ public class HotelService {
             }
         }
     }
+
+    public boolean tieneDisponibilidad(int codHotel){
+        Hotel hotel = hotelDAO.obtenerPorCodigo(codHotel);
+
+        if(hotel == null){
+            return false;
+        }
+
+        return hotel.getPlazasDisponibles() > 0;
+    }
 }

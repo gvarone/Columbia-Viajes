@@ -1,6 +1,7 @@
 
 package Services;
 import DAOs.VueloDAO;
+import Enums.Clase;
 import Modelos.Vuelo;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -34,5 +35,21 @@ public class VueloService {
                 System.out.println("Origen: " + v.getOrigen() + " | Destino: " + v.getDestino() + " | fecha y hora: " + v.getFechaHora() + " | Asientos Turista Disponibles: " + v.getAsientosTuristaDisponibles() + " | Asientos Primera Disponibles: " + v.getAsientosPrimeraDisponibles());
             }
         }
-    }    
+    }
+    
+    public boolean tieneDisponibilidad(int codVuelo, Clase clase){
+        Vuelo vuelo = vueloDAO.obtenerPorCodigo(codVuelo);
+
+        if(vuelo == null){
+            return false;
+        }
+
+        if(clase == Clase.TURISTA){
+            return vuelo.getAsientosTuristaDisponibles() > 0;
+        }
+        
+
+        return vuelo.getAsientosPrimeraDisponibles() > 0;
+
+    }
 }

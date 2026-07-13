@@ -1,6 +1,7 @@
 
 package Views;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public interface MenuVista {
@@ -8,5 +9,6 @@ public interface MenuVista {
     int leerOpcion();
     String leerString(String campo);
     int leerEntero(String campo, boolean positivo);
-    LocalDateTime leerDatoFecha(String campo);
+    LocalDateTime leerDatoFechaHora(String campo);
+    LocalDate leerDatoFecha(String campo);
 }

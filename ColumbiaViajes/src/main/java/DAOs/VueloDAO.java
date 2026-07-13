@@ -31,7 +31,7 @@ public class VueloDAO extends DAO<Vuelo> {
         Vuelo vuelo = new Vuelo(codigo, origen, destino, fechaHora,
                 asientosTotales, asientosTurista);
         vuelo.setAsientosDisponibles(asientosDisponibles);
-        vuelo.setAsientosTuristaDisponibles(asientosTuristaDisponibles);
+        vuelo.setAsientosTuristaDisponibles(asientosTuristaDisponibles); 
         if (eliminado) {
             vuelo.eliminar();
         }

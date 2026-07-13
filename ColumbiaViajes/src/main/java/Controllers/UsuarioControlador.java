@@ -15,9 +15,14 @@ import Services.UsuarioService;
 import Services.SucursalService;
 import Services.TuristaService;
 import Services.HotelService;
+import Services.PaqueteService;
 import Services.VueloService;
+
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+import Enums.Clase;
+import Enums.Hospedaje;
 import Enums.Rol;
 
 
@@ -30,6 +35,7 @@ public class UsuarioControlador {
     private HotelService hotelService;
     private VueloService vueloService;
     private TuristaService turistaService;
+    private PaqueteService paqueteService;
     
     public UsuarioControlador() {
         this.usuarioService = new UsuarioService();
@@ -37,8 +43,10 @@ public class UsuarioControlador {
         this.hotelService = new HotelService();
         this.vueloService = new VueloService();
         this.turistaService = new TuristaService();
+        this.paqueteService = new PaqueteService();
         this.loginVista = new LoginVista();
         this.menuVista = new MenuVistaBase();
+        this.usuario = null;
     }
     
     public void iniciar() {
@@ -84,6 +92,9 @@ public class UsuarioControlador {
                 break;
             case CLIENTE:
                 manejarMenuCliente();
+                break;
+            case VENDEDOR:
+                manejarMenuVendedor();
                 break;
             default:
                 break;
@@ -181,6 +192,19 @@ public class UsuarioControlador {
         }
     }
 
+    private void manejarMenuVendedor(){
+        boolean salir = false;
+        while (!salir) {
+            menuVista.mostrarMenu();
+            int opcion = menuVista.leerOpcion();
+            switch(opcion){
+                case 3:
+                    agregarPaquete();
+                    break;
+            }
+        }
+    }
+
     private void manejarMenuCliente(){
         boolean salir = false;
         while (!salir) {
@@ -227,7 +251,7 @@ public class UsuarioControlador {
     private void agregarVuelo() {
         String origen = menuVista.leerString("Origen");
         String destino = menuVista.leerString("Destino");
-        LocalDateTime fechaHora = menuVista.leerDatoFecha("Fecha-Hora");
+        LocalDateTime fechaHora = menuVista.leerDatoFechaHora("Fecha-Hora");
         int asientosTotales = menuVista.leerEntero("Asientos Totales",true);
         int asientosTurista = menuVista.leerEntero("Plazas Totales",true);
 
@@ -244,5 +268,81 @@ public class UsuarioControlador {
         System.out.println("Turista registrado con éxito.");
 
         return turista.getCodigo();
+    }
+
+    private void agregarPaquete(){
+        boolean esValido = false;
+        int opt = 0;
+
+        int codTurista = menuVista.leerEntero("Codigo de turista", true);
+        int codSucursal = menuVista.leerEntero("Codigo de sucursal", true);
+
+        int codHotel = menuVista.leerEntero("Codigo de hotel", true);
+
+        if(!hotelService.tieneDisponibilidad(codHotel)){
+            System.out.println("Hotel inexistente o no disponible");
+            return;
+        }
+        
+        Hospedaje hospedaje = null;
+        do {
+            System.out.println("Tipo de hospedaje");
+            System.out.println("1- Media pensión");
+            System.out.println("2- pensión completa");
+
+            opt = menuVista.leerOpcion();
+
+            switch (opt) {
+                case 1:
+                    hospedaje = Hospedaje.MEDIA_PENSION;
+                    esValido = true;
+                    break;
+                case 2:
+                    hospedaje = Hospedaje.PENSION_COMPLETA;
+                    esValido = true;
+                    break;
+                default:
+                    System.out.println("Opcion inexistente");
+                    break;
+            }
+        } while (!esValido);
+
+        int codVuelo = menuVista.leerEntero("Codigo de vuelo", true);
+
+        esValido = false;
+        Clase clase = null;
+        do{
+            System.out.println("Clase vuelo");
+            System.out.println("1- Turista");
+            System.out.println("2- Primera");
+
+            opt = menuVista.leerOpcion();
+
+            switch (opt) {
+                case 1:
+                    clase = Clase.TURISTA;
+                    esValido = true;
+                    break;
+                case 2:
+                    clase = Clase.PRIMERA;
+                    esValido = true;
+                    break;
+                default:
+                    System.out.println("Opcion inexistente");
+                    break;
+            }
+        }while(!esValido);
+
+        if(!vueloService.tieneDisponibilidad(codVuelo, clase)){
+            System.out.println("Vuelo inexistente o clase no disponible");
+            return;
+        }
+
+        LocalDate checkIn = menuVista.leerDatoFecha("Check In");
+        LocalDate checkOut = menuVista.leerDatoFecha("Check Out");
+
+        paqueteService.registrar(codTurista, usuario.getCodigo(), codSucursal, codVuelo, codHotel, hospedaje, clase, checkIn, checkOut);
+        System.out.println("Paquete asignado con exito");
+
     }
 }

@@ -23,6 +23,19 @@ public class Paquete{
         this.codVendedor = codVendedor;
         this.codSucursal = codSucursal;
     }
+
+    public Paquete(int codigo, int codTurista, int codVendedor, int codSucursal, Integer codVuelo, Integer codHotel, Hospedaje hospedaje, Clase clase, LocalDate checkIn, LocalDate checkOut) {
+        this.codigo = codigo;
+        this.codTurista = codTurista;
+        this.codVendedor = codVendedor;
+        this.codSucursal = codSucursal;
+        this.codVuelo = codVuelo;
+        this.codHotel = codHotel;
+        this.hospedaje = hospedaje;
+        this.clase = clase;
+        this.checkIn = checkIn;
+        this.checkOut = checkOut;
+    }
     
     public int getCodTurista() {
         return codTurista;
@@ -90,6 +103,14 @@ public class Paquete{
         this.hospedaje = hospedaje;
         this.checkIn = checkIn;
         this.checkOut = checkOut;
+    }
+
+    public LocalDate getCheckIn(){
+        return checkIn;
+    }
+
+    public LocalDate getCheckOut() {
+        return checkOut;
     }
    
 }

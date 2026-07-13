@@ -1,6 +1,7 @@
 
 package Views;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -58,12 +59,25 @@ public class MenuVistaBase implements MenuVista {
     }
     
     @Override
-    public LocalDateTime leerDatoFecha(String campo) {
+    public LocalDateTime leerDatoFechaHora(String campo) {
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
         while (true) {
             System.out.print(campo + " (dd/MM/yyyy HH:mm): ");
             try {
                 return LocalDateTime.parse(entrada.nextLine().trim(), formato);
+            } catch (DateTimeParseException e) {
+                System.out.println("Formato de fecha inválido.");
+            }
+        }
+    }
+
+    @Override
+    public LocalDate leerDatoFecha(String campo){
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        while(true){
+            System.out.print(campo + " (dd/MM/yyyy): ");
+            try {
+                return LocalDate.parse(entrada.nextLine().trim(), formato);
             } catch (DateTimeParseException e) {
                 System.out.println("Formato de fecha inválido.");
             }
