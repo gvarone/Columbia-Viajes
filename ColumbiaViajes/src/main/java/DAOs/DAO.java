@@ -5,6 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
@@ -13,6 +14,8 @@ public abstract class DAO<T> {
 
     protected static final String CARPETA_DATOS = "data/";
     private final String ruta;
+    protected static final DateTimeFormatter FORMATO_FECHA =
+            DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
 
     public DAO(String ruta) {
         this.ruta = ruta;

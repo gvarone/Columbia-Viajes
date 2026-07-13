@@ -9,8 +9,6 @@ import java.util.List;
 import java.util.function.Function;
 
 public class VueloDAO extends DAO<Vuelo> {
-    private static final DateTimeFormatter FORMATO_FECHA = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-
     public VueloDAO() {
         super(CARPETA_DATOS + "vuelos.txt");
     }

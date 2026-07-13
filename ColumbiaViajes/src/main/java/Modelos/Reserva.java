@@ -3,7 +3,7 @@ package Modelos;
 
 import Enums.Hospedaje;
 import Enums.Clase;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Reserva{
     private final int codigo;
@@ -14,16 +14,25 @@ public class Reserva{
     private Integer codHotel;
     private Hospedaje  hospedaje;
     private Clase clase;
-    private LocalDate checkIn;
-    private LocalDate checkOut;
+    private LocalDateTime checkIn;
+    private LocalDateTime checkOut;
+    private boolean eliminado; 
 
-    public Reserva(int codTurista, int codVendedor, int codSucursal, int codigo) {
+    public Reserva(int codigo, int codTurista, int codVendedor, int codSucursal) {
         this.codigo = codigo;
         this.codTurista = codTurista;
         this.codVendedor = codVendedor;
         this.codSucursal = codSucursal;
     }
     
+    public void eliminar() {
+        this.eliminado = true;
+    }
+    
+    public boolean isEliminado() {
+        return eliminado;
+    }
+        
     public int getCodTurista() {
         return codTurista;
     }
@@ -55,6 +64,14 @@ public class Reserva{
     public Clase getClase() {
         return clase;
     }
+    
+    public LocalDateTime getCheckIn(){
+        return checkIn;
+    }
+    
+    public LocalDateTime getCheckOut(){
+        return checkOut;
+    }
 
     public void setCodTurista(int codTurista) {
         this.codTurista = codTurista;
@@ -85,7 +102,8 @@ public class Reserva{
         this.clase = clase;
     }
     
-    public void agregarHotel(Integer codHotel, Hospedaje hospedaje, LocalDate checkIn, LocalDate checkOut) {
+    public void agregarHotel(Integer codHotel, Hospedaje hospedaje, 
+            LocalDateTime checkIn, LocalDateTime checkOut) {
         this.codHotel = codHotel;
         this.hospedaje = hospedaje;
         this.checkIn = checkIn;

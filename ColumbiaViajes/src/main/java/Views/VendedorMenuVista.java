@@ -1,6 +1,8 @@
 
 package Views;
 
+import Enums.Clase;
+import Enums.Hospedaje;
 import java.util.Scanner;
 
 public class VendedorMenuVista extends MenuVistaBase {    
@@ -15,8 +17,6 @@ public class VendedorMenuVista extends MenuVistaBase {
         System.out.println("1- Listar clientes actuales");
         System.out.println("2- Buscar un cliente por nombre");
         System.out.println("3- Asignar un paquete a un cliente");
-    }
-
-    
+    }    
     
 }

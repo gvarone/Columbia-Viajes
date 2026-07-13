@@ -40,7 +40,7 @@ public class AdminControlador {
         boolean salir = false;
         while (!salir) {
             menuVista.mostrarMenu();
-            int opcion = menuVista.leerOpcion();
+            int opcion = menuVista.leerOpcion(16);
             switch (opcion) {
                 case 1:
                     agregarSucursal();
@@ -160,17 +160,17 @@ public class AdminControlador {
     }
     
     private void modificarHotel() {
-        int codigo = menuVista.leerEntero("Ingrese el Codigo: ", true);
+        int codigo = menuVista.leerEntero("Codigo de Hotel", true);
         Hotel hotel = hotelService.obtenerPorCodigo(codigo);
         if (hotel == null) {
             System.out.println("No se encontró ningun hotel con ese criterio.");
             return;
         }
         System.out.println("Hotel encontrado: " + hotel);
-        String nuevoNombre = menuVista.leerString("Nuevo Nombre (Enter para no modificar)");
-        String nuevaDireccion = menuVista.leerString("Nueva dirección (Enter para no modificar)");
-        String nuevaCiudad = menuVista.leerString("Nueva ciudad (Enter para no modificar)");
-        String nuevoTelefono = menuVista.leerString("Nuevo teléfono (Enter para no modificar)");
+        String nuevoNombre = menuVista.leerString("Nuevo Nombre (Enter para omitir)");
+        String nuevaDireccion = menuVista.leerString("Nueva dirección (Enter para omitir)");
+        String nuevaCiudad = menuVista.leerString("Nueva ciudad (Enter para omitir)");
+        String nuevoTelefono = menuVista.leerString("Nuevo teléfono (Enter para omitir)");
         
         if (!nuevoNombre.isEmpty()) hotel.setNombre(nuevoNombre);
         if (!nuevaDireccion.isEmpty()) hotel.setDireccion(nuevaDireccion);
@@ -242,7 +242,7 @@ public class AdminControlador {
     private void agregarUsuario() {
         RegistroVista registroVista = new RegistroVista();
         registroVista.mostrarInicio();
-        int rol = menuVista.leerOpcion();
+        int rol = menuVista.leerOpcion(4);
         String nombre = registroVista.leerNombre();
         String apellido = registroVista.leerApellido();
         String username = registroVista.leerUsername();
